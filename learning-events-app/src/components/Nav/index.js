@@ -79,7 +79,7 @@ const Navbar = () => {
                     </li>
 
                     <li className="nav-item">
-                        <Link className="nav-link" to="/about" exact>
+                        <Link className="nav-link" to="/events" exact>
                             <i
                                 className="far fa-address-book">
                             </i>About
@@ -87,24 +87,17 @@ const Navbar = () => {
                     </li>
 
                     <li className="nav-item">
-                        <Link className="nav-link" to="/service" exact>
+                        <Link className="nav-link" to="/settings" exact>
                             <i
                                 className="far fa-clone">
                             </i>Services
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/testimonial" exact>
+                        <Link className="nav-link" to="/user" exact>
                             <i
                                 className="far fa-chart-bar">
                             </i>Testimonial
-                        </Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/contact" exact>
-                            <i
-                                className="far fa-copy">
-                            </i>Contact Us
                         </Link>
                     </li>
                 </ul>

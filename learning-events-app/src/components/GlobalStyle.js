@@ -12,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
         body{
             background: whitesmoke;
             font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
+            overflow-y: hidden;
         }
         `;
 

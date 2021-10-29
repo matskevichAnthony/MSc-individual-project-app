@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Point = styled.div`
     width: 25rem;
-    height: 25rem;
+    height: 20vh;
     position:absolute;
     z-index:100;
     top: 50%;

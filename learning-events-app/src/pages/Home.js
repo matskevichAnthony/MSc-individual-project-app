@@ -3,10 +3,9 @@ import MapApp from '../components/MapApp';
 const Home = () => {
 
     return (
-        <>
+        <div>
             <MapApp />
-        </>
-
+        </div>
     )
 
 }
