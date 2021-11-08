@@ -1,6 +1,9 @@
 import React from 'react';
-import MapApp from '../components/MapApp';
+import { useSelector } from 'react-redux';
 const Events = () => {
+
+    const events = useSelector((state) => state.getEvents)
+    console.log(events);
 
     return (
         <div>

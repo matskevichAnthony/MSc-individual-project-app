@@ -1,10 +1,10 @@
 import React from 'react';
-import MapApp from '../components/MapApp';
+import MapComponent from '../components/ApplicationMap';
 const Home = () => {
 
     return (
         <div>
-            <MapApp />
+            <MapComponent />
         </div>
     )
 
