@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router';
+import { useParams, useRouteMatch, path, url, Link } from 'react-router';
 import Card from '../components/Card';
 import styled from 'styled-components';
 const Events = () => {

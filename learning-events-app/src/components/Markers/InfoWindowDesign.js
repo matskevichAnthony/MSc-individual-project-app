@@ -18,11 +18,10 @@ const InfoWindowDesign = ({ information }) => {
                 <br />
                 available:<b>{information.placesAvailable}</b>
             </TextWrapper>
-            <Link to="/events/"> <ButtonToEvent>more</ButtonToEvent> </Link>
+            <Link to={{
+                pathname: `events/${information.id}`, props: information
+            }}><ButtonToEvent>more</ButtonToEvent></Link>
 
-            <Route path={`${path}/:topicId`} exact>
-                <EventPage />
-            </Route>
         </Wrapper>
 
     )
