@@ -49,7 +49,8 @@ const ApplicationMap = () => {
     const [map, setMap] = React.useState(null)
 
     const onLoad = React.useCallback(function callback(map) {
-
+        // const bounds = new window.google.maps.LatLngBounds();
+        // map.fitBounds(bounds);
         setMap(map)
     }, [])
 
@@ -57,12 +58,19 @@ const ApplicationMap = () => {
         setMap(null)
     }, [])
 
+    const defaultMapOptions = {
+        fullscreenControl: false,
+        disableDefaultUI: true
+    }
+
     return isLoaded ? (
         <GoogleMap
+
             mapContainerStyle={containerStyle}
-            zoom={10}
+            zoom={8}
             onLoad={onLoad}
             onUnmount={onUnmount}
+            options={defaultMapOptions}
             center={center}
         >
             {events.map((event) =>

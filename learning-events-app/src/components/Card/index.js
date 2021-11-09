@@ -1,10 +1,16 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { Wrapper, ImgWrapper, StyledButton } from "./styled";
 
 
-const Card = () => {
+const Card = ({ information }) => {
 
     return (
-        <div></div>
+        <Wrapper>
+            <ImgWrapper><img src={information.picture} /></ImgWrapper>
+            <h3>{information.event}</h3>
+            <StyledButton>click me</StyledButton>
+        </Wrapper>
     )
 
 }
