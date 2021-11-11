@@ -10,7 +10,7 @@ const allReducers = combineReducers({
     isLogged: isLogged,
     getEvents: getEventsReducer,
     toggleMarker: ToggleMarker,
-    location: getLocationReducer
+    getLocation: getLocationReducer
 
 });
 

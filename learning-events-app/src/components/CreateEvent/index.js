@@ -1,7 +1,7 @@
 import React from "react";
 import { Wrapper } from "./styled";
 import { Form, Row, Col, Button, FloatingLabel } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from "uuid";
 import eventImg from '../../assets/eventsIcons/event1.jpg'
 import eventsType from "../../data/eventsType";
@@ -9,6 +9,8 @@ import eventsType from "../../data/eventsType";
 const CreateEvent = ({ information }) => {
 
     const locationSelected = useSelector((state) => state.getLocation);
+    console.log(locationSelected);
+    const dispatch = useDispatch();
     const eventTypeData = eventsType();
     console.log(information);
     const submitHandler = (e) => {
@@ -22,6 +24,7 @@ const CreateEvent = ({ information }) => {
         console.log(e.target.age.value);
         console.log(e.target.dateTime.value);
         console.log(e.target.imgFile.value);
+
         const newEvent = {
             id: uuidv4(),
             event: e.target.eventName.value,
@@ -33,12 +36,14 @@ const CreateEvent = ({ information }) => {
             address: e.target.address.value,
             placesAvailable: e.target.numberPeople.value,
             minAge: e.target.age.value,
-            price: "20$",
-            date: "11/10/2021",
-            time: "12:10",
+            price: e.target.price.value,
+            date: e.target.dateTime.value,
+            time: e.target.dateTime.value,
             isToggled: false,
-
         }
+
+        dispatch({ type: "ADD_EVENT", payload: newEvent });
+
 
     }
 
