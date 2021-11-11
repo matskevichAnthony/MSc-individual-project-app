@@ -13,18 +13,22 @@ import { CreateEventButton } from './styled';
 
 const ApplicationMap = () => {
 
+    const dispatch = useDispatch();
     const [markerStatus, setMarkerStatus] = useState(false);
     const [markerIsChosen, setMarkerIsChosen] = useState(false);
+    let GEO = {};
 
     const getLocation = (e) => {
+        GEO = e.latLng.toJSON();
         console.log(e.latLng.toJSON());
         setMarkerIsChosen(true);
         setMarkerStatus(!markerStatus);
+        dispatch({ type: "GET_LOCATION", payload: e.latLng.toJSON() });
     }
 
-
+    const locationSelected = useSelector((state) => state.getLocation)
+    console.log(locationSelected);
     const events = useSelector((state) => state.getEvents);
-    const dispatch = useDispatch();
 
     const containerStyle = {
         width: '100%',
@@ -77,7 +81,7 @@ const ApplicationMap = () => {
                 }} ></NormalMarker>
             )}
 
-            {markerIsChosen ? <CreateEvent /> : <></>}
+            {markerIsChosen ? <CreateEvent information={GEO} /> : <></>}
 
             {
                 markerStatus ? <></> : <CreateEventButton onClick={() => setMarkerStatus(!markerStatus)}>Create Event!</CreateEventButton>

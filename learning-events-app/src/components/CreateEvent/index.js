@@ -1,14 +1,16 @@
 import React from "react";
 import { Wrapper } from "./styled";
 import { Form, Row, Col, Button, FloatingLabel } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 import { v4 as uuidv4 } from "uuid";
 import eventImg from '../../assets/eventsIcons/event1.jpg'
 import eventsType from "../../data/eventsType";
 
-const CreateEvent = () => {
+const CreateEvent = ({ information }) => {
 
+    const locationSelected = useSelector((state) => state.getLocation);
     const eventTypeData = eventsType();
-
+    console.log(information);
     const submitHandler = (e) => {
         e.preventDefault();
         console.log(e.target.eventName.value);
@@ -20,6 +22,23 @@ const CreateEvent = () => {
         console.log(e.target.age.value);
         console.log(e.target.dateTime.value);
         console.log(e.target.imgFile.value);
+        const newEvent = {
+            id: uuidv4(),
+            event: e.target.eventName.value,
+            eventType: e.target.eventType.value,
+            description: e.target.details.value,
+            place: e.target.place.value,
+            picture: eventImg,
+            GEO: locationSelected,
+            address: e.target.address.value,
+            placesAvailable: e.target.numberPeople.value,
+            minAge: e.target.age.value,
+            price: "20$",
+            date: "11/10/2021",
+            time: "12:10",
+            isToggled: false,
+
+        }
 
     }
 
@@ -96,11 +115,14 @@ const CreateEvent = () => {
                 </Row>
 
                 <Form.Group className="mb-3" id="formGridCheckbox">
+
                     <Form.Label>Date</Form.Label>
                     <br />
                     <input name="dateTime" id="datetime" type="datetime-local" />
                 </Form.Group>
-
+                <Form.Label>Price</Form.Label>
+                <br />
+                <Form.Control name="price" />
                 <Form.Group controlId="formFile" className="mb-3">
                     <Form.Label>Default file input example</Form.Label>
                     <Form.Control name="imgFile" type="file" />
