@@ -11,7 +11,15 @@ const CreateEvent = () => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        console.log(e.target);
+        console.log(e.target.eventName.value);
+        console.log(e.target.numberPeople.value);
+        console.log(e.target.address.value);
+        console.log(e.target.details.value);
+        console.log(e.target.place.value);
+        console.log(e.target.eventType.value);
+        console.log(e.target.age.value);
+        console.log(e.target.dateTime.value);
+        console.log(e.target.imgFile.value);
 
     }
 
@@ -42,22 +50,23 @@ const CreateEvent = () => {
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="formGridEmail">
                         <Form.Label>Event name</Form.Label>
-                        <Form.Control type="text" placeholder="Enter event name" />
+                        <Form.Control name="eventName" type="text" placeholder="Enter event name" />
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formGridPassword">
                         <Form.Label>Number of people</Form.Label>
-                        <Form.Control type="text" placeholder="Number of people" />
+                        <Form.Control name="numberPeople" type="text" placeholder="Number of people" />
                     </Form.Group>
                 </Row>
 
                 <Form.Group className="mb-3" controlId="formGridAddress1">
                     <Form.Label>Address</Form.Label>
-                    <Form.Control placeholder="1234 Main St" />
+                    <Form.Control name="address" placeholder="1234 Main St" />
                 </Form.Group>
 
                 <FloatingLabel controlId="floatingTextarea2" label="Comments">
                     <Form.Control
+                        name="details"
                         as="textarea"
                         placeholder="Leave a comment here"
                         style={{ height: '100px' }}
@@ -67,12 +76,12 @@ const CreateEvent = () => {
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="formGridCity">
                         <Form.Label>Place</Form.Label>
-                        <Form.Control />
+                        <Form.Control name="place" />
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formGridState">
                         <Form.Label>Event type</Form.Label>
-                        <Form.Select defaultValue="Choose...">
+                        <Form.Select name="eventType" defaultValue="Choose...">
                             <option>{eventTypeData[0].event}</option>
                             <option>{eventTypeData[1].event}</option>
                             <option>{eventTypeData[2].event}</option>
@@ -82,19 +91,19 @@ const CreateEvent = () => {
 
                     <Form.Group as={Col} controlId="formGridZip">
                         <Form.Label>Min Age</Form.Label>
-                        <Form.Control />
+                        <Form.Control name="age" />
                     </Form.Group>
                 </Row>
 
                 <Form.Group className="mb-3" id="formGridCheckbox">
                     <Form.Label>Date</Form.Label>
                     <br />
-                    <input id="datetime" type="datetime-local" />
+                    <input name="dateTime" id="datetime" type="datetime-local" />
                 </Form.Group>
 
                 <Form.Group controlId="formFile" className="mb-3">
                     <Form.Label>Default file input example</Form.Label>
-                    <Form.Control type="file" />
+                    <Form.Control name="imgFile" type="file" />
                 </Form.Group>
 
                 <Button onClick variant="primary" type="submit">
