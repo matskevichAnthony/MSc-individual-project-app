@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.div`
 
@@ -40,6 +41,11 @@ img{
 
 `;
 
+export const StyledLink = styled(Link)`
+
+width: 100%;
+
+`
 
 export const StyledButton = styled.button`
 
@@ -48,7 +54,4 @@ height: 3rem;
 border:none;
 background-color: rebeccapurple;
 color: white;
-
-
-
 `;

@@ -20,6 +20,8 @@ const eventsType = () => {
             placesAvailable: 15,
             minAge: 18,
             price: "20$",
+            date: "11/10/2021",
+            time: "12:10",
             isToggled: false,
 
         },
@@ -38,6 +40,8 @@ const eventsType = () => {
             placesAvailable: 15,
             minAge: 18,
             price: "20$",
+            date: "11/10/2021",
+            time: "12:10",
             isToggled: false,
 
         },
@@ -56,6 +60,8 @@ const eventsType = () => {
             placesAvailable: 15,
             minAge: 18,
             price: "20$",
+            date: "11/10/2021",
+            time: "12:10",
             isToggled: true,
 
         },
@@ -74,6 +80,8 @@ const eventsType = () => {
             placesAvailable: 15,
             minAge: 19,
             price: "20$",
+            date: "11/10/2021",
+            time: "12:10",
             isToggled: false,
 
         },
@@ -92,6 +100,8 @@ const eventsType = () => {
             placesAvailable: 15,
             minAge: 18,
             price: "20$",
+            date: "11/10/2021",
+            time: "12:10",
             isToggled: false,
 
         },
@@ -110,6 +120,8 @@ const eventsType = () => {
             placesAvailable: 15,
             minAge: 18,
             price: "20$",
+            date: "11/10/2021",
+            time: "12:10",
             isToggled: true,
 
         },
@@ -128,6 +140,8 @@ const eventsType = () => {
             placesAvailable: 15,
             minAge: 18,
             price: "20$",
+            date: "11/10/2021",
+            time: "12:10",
             isToggled: false,
 
         },
@@ -146,6 +160,8 @@ const eventsType = () => {
             placesAvailable: 15,
             minAge: 18,
             price: "20$",
+            date: "11/10/2021",
+            time: "12:10",
             isToggled: false,
 
         },
@@ -164,6 +180,8 @@ const eventsType = () => {
             placesAvailable: 15,
             minAge: 18,
             price: "20$",
+            date: "11/10/2021",
+            time: "12:10",
             isToggled: true,
 
         },
@@ -182,6 +200,8 @@ const eventsType = () => {
             placesAvailable: 15,
             minAge: 18,
             price: "20$",
+            date: "11/10/2021",
+            time: "12:10",
             isToggled: false,
 
         },
@@ -200,6 +220,8 @@ const eventsType = () => {
             placesAvailable: 15,
             minAge: 18,
             price: "20$",
+            date: "11/10/2021",
+            time: "12:10",
             isToggled: false,
 
         },
@@ -218,6 +240,8 @@ const eventsType = () => {
             placesAvailable: 15,
             minAge: 18,
             price: "20$",
+            date: "11/10/2021",
+            time: "12:10",
             isToggled: true,
 
         },
