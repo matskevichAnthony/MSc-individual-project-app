@@ -1,31 +1,24 @@
 import { GoogleMap, useJsApiLoader, LoadScript } from '@react-google-maps/api';
+import { Wrapper, Status } from "@googlemaps/react-wrapper";
+
 import NormalMarker from '../Markers/NormalMarker';
 import { v4 as uuidv4 } from "uuid";
 import Events from '../../data/Events';
 import eventsType from '../../data/eventsType';
-import React from 'react';
+import { React, useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import addEvent from '..//..//action/addEvent';
+import { CreateEventButton } from './styled';
 
 const ApplicationMap = () => {
 
+    const [markerStatus, setMarkerStatus] = useState(false);
+    const [markerIsChosen, setMarkerIsChosen] = useState(false);
 
-    const testObj = {
-        id: uuidv4(),
-        event: "Programming and Coffee",
-        eventType: eventsType[3],
-        description: "Today we are going to learn how to use python and drink some nice coffee",
-        place: "Icon Club",
-        GEO: {
-            lat: 52.763338,
-            lng: 36.365466
-        },
-        address: "",
-        placesAvailable: 15,
-        minAge: 18,
-        price: "20$",
+    const getLocation = (e) => {
+        console.log(e.latLng.toJSON());
+    }
 
-    };
 
     const events = useSelector((state) => state.getEvents);
     const dispatch = useDispatch();
@@ -46,15 +39,15 @@ const ApplicationMap = () => {
         googleMapsApiKey: "AIzaSyC6nhjY1_Ft9Z4LxyfyHglsoD7ZpO9cWl4"
     })
 
-    const [map, setMap] = React.useState(null)
+    const [map, setMap] = useState(null)
 
-    const onLoad = React.useCallback(function callback(map) {
+    const onLoad = useCallback(function callback(map) {
         // const bounds = new window.google.maps.LatLngBounds();
         // map.fitBounds(bounds);
         setMap(map)
     }, [])
 
-    const onUnmount = React.useCallback(function callback(map) {
+    const onUnmount = useCallback(function callback(map) {
         setMap(null)
     }, [])
 
@@ -65,7 +58,7 @@ const ApplicationMap = () => {
     }
 
     return isLoaded ? (
-        <GoogleMap
+        <GoogleMap onClick={markerStatus ? (e) => getLocation(e) : console.log("nope")}
 
             mapContainerStyle={containerStyle}
             zoom={8}
@@ -80,6 +73,7 @@ const ApplicationMap = () => {
                     scaledSize: new window.google.maps.Size(50, 50)
                 }} ></NormalMarker>
             )}
+            <CreateEventButton onClick={() => setMarkerStatus(!markerStatus)}>Create Event!</CreateEventButton>
         </GoogleMap >
     ) : <></>
 }

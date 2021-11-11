@@ -12,19 +12,19 @@ const Nav = () => {
             <h1><Link id="logo" to="/">Edu Events</Link></h1>
             <ul>
                 <li>
-                    <Link to="/">1.Home</Link>
+                    <Link to="/">Home</Link>
                     <Line transition={{ duration: 0.75 }} initial={{ width: "0%" }} animate={{ width: pathname === '/' ? "50%" : "0%" }} />
                 </li>
                 <li>
-                    <Link to="/events">2.Our Work</Link>
+                    <Link to="/events">Our Work</Link>
                     <Line transition={{ duration: 0.75 }} initial={{ width: "0%" }} animate={{ width: pathname === '/work' ? "50%" : "0%" }} />
                 </li>
                 <li>
-                    <Link to="/settings">3.Contact Us</Link>
+                    <Link to="/settings">Settings</Link>
                     <Line transition={{ duration: 0.75 }} initial={{ width: "0%" }} animate={{ width: pathname === '/contact' ? "50%" : "0%" }} />
                 </li>
                 <li>
-                    <Link to="/user">3.Contact Us</Link>
+                    <Link to="/user">User</Link>
                     <Line transition={{ duration: 0.75 }} initial={{ width: "0%" }} animate={{ width: pathname === '/contact' ? "50%" : "0%" }} />
                 </li>
             </ul>
@@ -39,7 +39,7 @@ const StyledNav = styled.nav`
     justify-content: space-between;
     align-items:center;
     padding:1rem 10rem;
-    background-color: #282828;
+    background-color: tomato;
     position: sticky;
     top:0;
     z-index:100;
