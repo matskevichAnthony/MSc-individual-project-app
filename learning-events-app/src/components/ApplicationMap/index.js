@@ -8,6 +8,7 @@ import eventsType from '../../data/eventsType';
 import { React, useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import addEvent from '..//..//action/addEvent';
+import CreateEvent from '../CreateEvent';
 import { CreateEventButton } from './styled';
 
 const ApplicationMap = () => {
@@ -17,6 +18,8 @@ const ApplicationMap = () => {
 
     const getLocation = (e) => {
         console.log(e.latLng.toJSON());
+        setMarkerIsChosen(true);
+        setMarkerStatus(!markerStatus);
     }
 
 
@@ -73,7 +76,13 @@ const ApplicationMap = () => {
                     scaledSize: new window.google.maps.Size(50, 50)
                 }} ></NormalMarker>
             )}
-            <CreateEventButton onClick={() => setMarkerStatus(!markerStatus)}>Create Event!</CreateEventButton>
+
+            {markerIsChosen ? <CreateEvent /> : <></>}
+
+            {
+                markerStatus ? <></> : <CreateEventButton onClick={() => setMarkerStatus(!markerStatus)}>Create Event!</CreateEventButton>
+            }
+
         </GoogleMap >
     ) : <></>
 }

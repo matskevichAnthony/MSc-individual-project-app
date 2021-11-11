@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import Type from "./eventsType";
+import Type from "../data/eventsType";
 import eventImg from '../assets/eventsIcons/event1.jpg';
 
 const eventsType = () => {
