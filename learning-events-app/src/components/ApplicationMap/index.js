@@ -1,13 +1,7 @@
 import { GoogleMap, useJsApiLoader, LoadScript } from '@react-google-maps/api';
-import { Wrapper, Status } from "@googlemaps/react-wrapper";
-
 import NormalMarker from '../Markers/NormalMarker';
-import { v4 as uuidv4 } from "uuid";
-import Events from '../../data/Events';
-import eventsType from '../../data/eventsType';
 import { React, useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import addEvent from '..//..//action/addEvent';
 import CreateEvent from '../CreateEvent';
 import { CreateEventButton } from './styled';
 
@@ -27,7 +21,6 @@ const ApplicationMap = () => {
     }
 
     const locationSelected = useSelector((state) => state.getLocation)
-    console.log(locationSelected);
     const events = useSelector((state) => state.getEvents);
 
     const containerStyle = {

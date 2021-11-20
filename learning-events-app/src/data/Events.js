@@ -27,7 +27,7 @@ const eventsType = () => {
         },
         {
             id: uuidv4(),
-            event: "Bottellon",
+            event: "Singing lessons",
             eventType: Type[1],
             description: "Today we are going to learn how to use python and drink some nice coffee",
             place: "Icon Club",
@@ -47,7 +47,7 @@ const eventsType = () => {
         },
         {
             id: uuidv4(),
-            event: "Public PickUp",
+            event: "Drawing lessons",
             eventType: Type[2],
             description: "Today we are going to learn how to use python and drink some nice coffee",
             place: "Icon Club",
@@ -107,7 +107,7 @@ const eventsType = () => {
         },
         {
             id: uuidv4(),
-            event: "Nice tings",
+            event: "Programming tutorials for beginners",
             eventType: Type[2],
             description: "Today we are going to learn how to use python and drink some nice coffee",
             place: "Icon Club",
@@ -127,7 +127,7 @@ const eventsType = () => {
         },
         {
             id: uuidv4(),
-            event: "Fucking shit",
+            event: "Language exchange club",
             eventType: Type[0],
             description: "Today we are going to learn how to use python and drink some nice coffee",
             place: "Icon Club",
@@ -143,106 +143,6 @@ const eventsType = () => {
             date: "11/10/2021",
             time: "12:10",
             isToggled: false,
-
-        },
-        {
-            id: uuidv4(),
-            event: "Bottellon",
-            eventType: Type[1],
-            description: "Today we are going to learn how to use python and drink some nice coffee",
-            place: "Icon Club",
-            picture: eventImg,
-            GEO: {
-                lat: 51.563338,
-                lng: 36.565466
-            },
-            address: "TIRSO DE MOLINA",
-            placesAvailable: 15,
-            minAge: 18,
-            price: "20$",
-            date: "11/10/2021",
-            time: "12:10",
-            isToggled: false,
-
-        },
-        {
-            id: uuidv4(),
-            event: "Public PickUp",
-            eventType: Type[2],
-            description: "Today we are going to learn how to use python and drink some nice coffee",
-            place: "Icon Club",
-            picture: eventImg,
-            GEO: {
-                lat: 53.763338,
-                lng: 36.265466
-            },
-            address: "53 GEORGE ST",
-            placesAvailable: 15,
-            minAge: 18,
-            price: "20$",
-            date: "11/10/2021",
-            time: "12:10",
-            isToggled: true,
-
-        },
-        {
-            id: uuidv4(),
-            event: "Programming and Coffee",
-            eventType: Type[0],
-            description: "Today we are going to learn how to use python and drink some nice coffee",
-            place: "Icon Club",
-            picture: eventImg,
-            GEO: {
-                lat: 53.563338,
-                lng: 36.365466
-            },
-            address: "CALLE MANZANA 3",
-            placesAvailable: 15,
-            minAge: 18,
-            price: "20$",
-            date: "11/10/2021",
-            time: "12:10",
-            isToggled: false,
-
-        },
-        {
-            id: uuidv4(),
-            event: "Bottellon",
-            eventType: Type[1],
-            description: "Today we are going to learn how to use python and drink some nice coffee",
-            place: "Icon Club",
-            picture: eventImg,
-            GEO: {
-                lat: 53.963338,
-                lng: 36.275466
-            },
-            address: "TIRSO DE MOLINA",
-            placesAvailable: 15,
-            minAge: 18,
-            price: "20$",
-            date: "11/10/2021",
-            time: "12:10",
-            isToggled: false,
-
-        },
-        {
-            id: uuidv4(),
-            event: "Public PickUp",
-            eventType: Type[2],
-            description: "Today we are going to learn how to use python and drink some nice coffee",
-            place: "Icon Club",
-            picture: eventImg,
-            GEO: {
-                lat: 52.763338,
-                lng: 35.265466
-            },
-            address: "53 GEORGE ST",
-            placesAvailable: 15,
-            minAge: 18,
-            price: "20$",
-            date: "11/10/2021",
-            time: "12:10",
-            isToggled: true,
 
         },
 

@@ -7,6 +7,8 @@ import { Router, Switch, Route, useLocation, useParams, useRouteMatch } from 're
 import GlobalStyle from "./components/GlobalStyle";
 import Settings from "./pages/Settings";
 import User from "./pages/User";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 import Events from "./pages/Events";
 import EventPage from "./pages/EventPage";
 import { AnimatePresence } from 'framer-motion';
@@ -39,6 +41,12 @@ function App() {
           </Route>
           <Route path="/user" exact>
             <User />
+          </Route>
+          <Route path="/login" exact>
+            <Login />
+          </Route>
+          <Route path="/register" exact>
+            <SignUp />
           </Route>
         </Switch>
       </AnimatePresence>
