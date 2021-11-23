@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import Nav from "./components/Nav";
 import Navigation from './components/Navigation'
 import Home from './pages/Home'
 import { Router, Switch, Route, useLocation, useParams, useRouteMatch } from 'react-router-dom';
