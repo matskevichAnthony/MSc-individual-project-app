@@ -1,9 +1,7 @@
 import styled from "styled-components";
-import { StyledButton } from "../Card/styled";
 
 
 export const CreateEventButton = styled.button`
-
 width: 8rem;
 height: 2rem;
 background-color: tomato;
@@ -12,6 +10,4 @@ border:none;
 position: relative;
 top: 90%;
 left: 46%;
-
-
 `

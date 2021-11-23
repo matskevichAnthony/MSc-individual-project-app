@@ -2,8 +2,6 @@ import styled from "styled-components";
 import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.div`
-
-
 width: 15rem;
 height: 15rem;
 border-radius: 20%;
@@ -15,8 +13,6 @@ align-items: center;
 overflow: hidden;
 margin: 2rem;
 border: 1px solid tomato;
-
-
 `;
 
 
@@ -42,13 +38,10 @@ img{
 `;
 
 export const StyledLink = styled(Link)`
-
 width: 100%;
-
 `
 
 export const StyledButton = styled.button`
-
 width: 100%;
 height: 3rem;
 border:none;

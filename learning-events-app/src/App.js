@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Events from "./pages/Events";
 import EventPage from "./pages/EventPage";
+import MyEvents from "./pages/MyEvents";
 import { AnimatePresence } from 'framer-motion';
 
 function App() {
@@ -47,6 +48,9 @@ function App() {
           </Route>
           <Route path="/register" exact>
             <SignUp />
+          </Route>
+          <Route path="/myevents" exact>
+            <MyEvents />
           </Route>
         </Switch>
       </AnimatePresence>

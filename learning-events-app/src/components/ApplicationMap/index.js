@@ -29,10 +29,9 @@ const ApplicationMap = () => {
     };
 
     const center = {
-        lat: 52.763338,
-        lng: 36.565466
+        lat: 55.75070765150959,
+        lng: 37.63230442021678
     }
-
 
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
@@ -61,7 +60,7 @@ const ApplicationMap = () => {
         <GoogleMap onClick={markerStatus ? (e) => getLocation(e) : console.log("nope")}
 
             mapContainerStyle={containerStyle}
-            zoom={8}
+            zoom={13}
             onLoad={onLoad}
             onUnmount={onUnmount}
             options={defaultMapOptions}

@@ -1,7 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Row } from 'react-bootstrap';
 import { useParams, useRouteMatch, path, url, Link } from 'react-router';
-import Card from '../components/Card';
+import CardComponent from '../components/CardComponent';
 import styled from 'styled-components';
 const Events = () => {
 
@@ -10,9 +11,11 @@ const Events = () => {
 
     return (
         <Wrapper>
-            {events.map((e) => {
-                return <Card information={e} />
-            })}
+            <Row xs={2} md={3} className="g-4">
+                {events.map((e) => {
+                    return <CardComponent information={e} />
+                })}
+            </Row>
         </Wrapper>
     )
 
@@ -21,11 +24,7 @@ const Events = () => {
 export default Events;
 
 const Wrapper = styled.div`
-flex-wrap: wrap;
-padding-top: 1rem;
-width: 100%;
-height: 100vh;
 display: flex;
-justify-content: space-around;
+justify-content: center;
 
 `
