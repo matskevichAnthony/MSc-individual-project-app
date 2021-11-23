@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useParams, useLocation } from 'react-router';
 import { Wrapper, InnerBox, HeaderBox, HeaderImg, HeaderInfo, SideInfo, MainInfo, InformationDiv, InformationSideDiv, IconWrapper, MapWrapper, JoinButton, GoBackButton } from './styled';
@@ -8,6 +8,13 @@ import EventMap from '../../components/EventMap'
 const EventPage = ({ state }) => {
 
     const info = useLocation(state);
+    const dispatch = useDispatch();
+
+    const clickHandler = () => {
+        console.log('clicked');
+        console.log(info.props);
+        dispatch({ type: "USER_ATTEND_EVENT", payload: info.props });
+    }
 
 
     const events = useSelector((state) => state.getEvents)
@@ -21,7 +28,7 @@ const EventPage = ({ state }) => {
                     <HeaderInfo>{info.props.event}</HeaderInfo>
                 </HeaderBox>
                 <HeaderBox>
-                    <MainInfo><InformationDiv><b>About the event</b><br />{info.props.description}<br /><JoinButton>Join!</JoinButton> </InformationDiv></MainInfo>
+                    <MainInfo><InformationDiv><b>About the event</b><br />{info.props.description}<br /><JoinButton onClick={clickHandler}>Join!</JoinButton> </InformationDiv></MainInfo>
                     <SideInfo>
                         <InformationSideDiv>
                             <IconWrapper> <FaDollarSign /> {info.props.price}  </IconWrapper>

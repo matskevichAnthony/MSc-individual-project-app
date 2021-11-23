@@ -27,7 +27,9 @@ const userData = () => {
                 type: "Language",
                 preferenceLevel: 8,
             },
-        ]
+        ],
+        eventsAttend: [],
+        eventsManage: [],
     }
 
 }

@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 import { useLocation } from "react-router";
 const Nav = () => {
     const { pathname } = useLocation();
-
+    const userState = useSelector((state) => state.userReducer);
 
     return (
         <StyledNav>
@@ -19,14 +20,24 @@ const Nav = () => {
                     <Link to="/events">Events</Link>
                     <Line transition={{ duration: 0.75 }} initial={{ width: "0%" }} animate={{ width: pathname === '/work' ? "50%" : "0%" }} />
                 </li>
-                <li>
-                    <Link to="/myevents">My events</Link>
-                    <Line transition={{ duration: 0.75 }} initial={{ width: "0%" }} animate={{ width: pathname === '/contact' ? "50%" : "0%" }} />
-                </li>
-                <li>
-                    <Link to="/user">User</Link>
-                    <Line transition={{ duration: 0.75 }} initial={{ width: "0%" }} animate={{ width: pathname === '/contact' ? "50%" : "0%" }} />
-                </li>
+                {userState.isLogged ?
+                    <>
+                        <li>
+                            <Link to="/myevents">My events</Link>
+                            <Line transition={{ duration: 0.75 }} initial={{ width: "0%" }} animate={{ width: pathname === '/contact' ? "50%" : "0%" }} />
+                        </li>
+                        <li>
+                            <Link to="/user">User</Link>
+                            <Line transition={{ duration: 0.75 }} initial={{ width: "0%" }} animate={{ width: pathname === '/contact' ? "50%" : "0%" }} />
+                        </li>
+
+                    </> : <li>
+                        <Link to="/login">Login</Link>
+                        <Line transition={{ duration: 0.75 }} initial={{ width: "0%" }} animate={{ width: pathname === '/contact' ? "50%" : "0%" }} />
+                    </li>
+
+                }
+
             </ul>
         </StyledNav>
     )

@@ -2,6 +2,7 @@ import React from 'react';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Card } from 'react-bootstrap';
+import { Wrapper } from './styled';
 const responsive = {
     desktop: {
         breakpoint: { max: 3000, min: 1024 },
@@ -20,53 +21,28 @@ const responsive = {
     }
 };
 // TO DO DESIGN AND ORGANIZE. GET DATA FROM REDUX INNIT.
-const UserEvents = ({ deviceType }) => {
+const UserEvents = ({ deviceType, information }) => {
 
     return (
         <Carousel
             deviceType={deviceType}
             responsive={responsive}
         >
-            <Card>
-                <Card.Img variant="top" src="holder.js/100px160" />
-                <Card.Body>
-                    <Card.Title>Card title</Card.Title>
-                    <Card.Text>
-                        This is a longer card with supporting text below as a natural
-                        lead-in to additional content. This content is a little bit longer.
-                    </Card.Text>
-                </Card.Body>
-            </Card>
-            <Card>
-                <Card.Img variant="top" src="holder.js/100px160" />
-                <Card.Body>
-                    <Card.Title>Card title</Card.Title>
-                    <Card.Text>
-                        This is a longer card with supporting text below as a natural
-                        lead-in to additional content. This content is a little bit longer.
-                    </Card.Text>
-                </Card.Body>
-            </Card>
-            <Card>
-                <Card.Img variant="top" src="holder.js/100px160" />
-                <Card.Body>
-                    <Card.Title>Card title</Card.Title>
-                    <Card.Text>
-                        This is a longer card with supporting text below as a natural
-                        lead-in to additional content. This content is a little bit longer.
-                    </Card.Text>
-                </Card.Body>
-            </Card>
-            <Card>
-                <Card.Img variant="top" src="holder.js/100px160" />
-                <Card.Body>
-                    <Card.Title>Card title</Card.Title>
-                    <Card.Text>
-                        This is a longer card with supporting text below as a natural
-                        lead-in to additional content. This content is a little bit longer.
-                    </Card.Text>
-                </Card.Body>
-            </Card>
+            {information.map((card) =>
+
+                <Card>
+                    <Card.Img variant="top" src="holder.js/100px160" />
+                    <Card.Body>
+                        <Card.Title>Card title</Card.Title>
+                        <Card.Text>
+                            This is a longer card with supporting text below as a natural
+                            lead-in to additional content. This content is a little bit longer.
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+
+            )}
+
         </Carousel>
     )
 
