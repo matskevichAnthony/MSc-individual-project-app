@@ -8,9 +8,11 @@ import { CreateEventButton } from './styled';
 const ApplicationMap = () => {
 
     const dispatch = useDispatch();
+    const userState = useSelector((state) => state.userReducer);
     const [markerStatus, setMarkerStatus] = useState(false);
     const [markerIsChosen, setMarkerIsChosen] = useState(false);
     let GEO = {};
+    console.log(userState);
 
     const getLocation = (e) => {
         GEO = e.latLng.toJSON();

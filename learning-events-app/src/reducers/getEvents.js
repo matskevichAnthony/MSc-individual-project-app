@@ -1,7 +1,7 @@
 import Events from "../data/Events";
 
 const getEventsReducer = (state = Events(), action) => {
-    console.log(action);
+    console.log(state[0]);
     switch (action.type) {
         case 'GET_EVENTS':
             return state;

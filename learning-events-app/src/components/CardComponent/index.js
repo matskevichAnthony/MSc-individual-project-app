@@ -28,7 +28,7 @@ const CardComponent = ({ information }) => {
                         {information.description}
                     </Card.Text>
                     <StyledLink to={{
-                        pathname: `${url}/${information.id}`, props: information
+                        pathname: `events/${information.id}`, props: information
 
                     }}><StyledButton onClick={() => clickHandler()}>click me</StyledButton></StyledLink>
                 </Card.Body>

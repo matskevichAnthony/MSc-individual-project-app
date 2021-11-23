@@ -9,6 +9,8 @@ const userReducer = (state = userData(), action) => {
             return [...state, action.payload];
         case 'USER_ATTEND_EVENT':
             return { ...state, eventsAttend: [...state.eventsAttend, action.payload] };
+        case 'USER_ADD_EVENT':
+            return { ...state, eventsManage: [...state.eventsManage, action.payload] };
         default:
             return state;
     }

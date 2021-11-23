@@ -1,7 +1,7 @@
 import React from 'react';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { Card } from 'react-bootstrap';
+import CardComponent from '../CardComponent';
 import { Wrapper } from './styled';
 const responsive = {
     desktop: {
@@ -29,18 +29,7 @@ const UserEvents = ({ deviceType, information }) => {
             responsive={responsive}
         >
             {information.map((card) =>
-
-                <Card>
-                    <Card.Img variant="top" src="holder.js/100px160" />
-                    <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                            This is a longer card with supporting text below as a natural
-                            lead-in to additional content. This content is a little bit longer.
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-
+                <CardComponent information={card} />
             )}
 
         </Carousel>

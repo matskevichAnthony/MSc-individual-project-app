@@ -42,6 +42,7 @@ const CreateEvent = ({ information }) => {
             isToggled: false,
         }
 
+        dispatch({ type: "USER_ADD_EVENT", payload: newEvent });
         dispatch({ type: "ADD_EVENT", payload: newEvent });
 
 

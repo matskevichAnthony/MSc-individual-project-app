@@ -3,12 +3,12 @@ import Type from "../data/eventsType";
 import eventImg from '../assets/eventsIcons/event1.jpg';
 
 const eventsType = () => {
-
+    const types = Type();
     return [
         {
             id: uuidv4(),
             event: "Programming and Coffee",
-            eventType: Type[0],
+            eventType: types[0],
             description: "Today we are going to learn how to use python and drink some nice coffee",
             place: "Icon Club",
             picture: eventImg,
@@ -28,7 +28,7 @@ const eventsType = () => {
         {
             id: uuidv4(),
             event: "Singing lessons",
-            eventType: Type[1],
+            eventType: types[1],
             description: "Today we are going to learn how to use python and drink some nice coffee",
             place: "Icon Club",
             picture: eventImg,
@@ -48,7 +48,7 @@ const eventsType = () => {
         {
             id: uuidv4(),
             event: "Drawing lessons",
-            eventType: Type[2],
+            eventType: types[2],
             description: "Today we are going to learn how to use python and drink some nice coffee",
             place: "Icon Club",
             picture: eventImg,
@@ -68,7 +68,7 @@ const eventsType = () => {
         {
             id: uuidv4(),
             event: "Cooking time",
-            eventType: Type[0],
+            eventType: types[0],
             description: "Today we are going to learn how to use python and drink some nice coffee",
             place: "Gordon Ramsay",
             picture: eventImg,
@@ -88,7 +88,7 @@ const eventsType = () => {
         {
             id: uuidv4(),
             event: "Workout Session",
-            eventType: Type[1],
+            eventType: types[1],
             description: "Today we are going to learn how to use python and drink some nice coffee",
             place: "Alex Fitness",
             picture: eventImg,
@@ -108,7 +108,7 @@ const eventsType = () => {
         {
             id: uuidv4(),
             event: "Programming tutorials for beginners",
-            eventType: Type[2],
+            eventType: types[2],
             description: "Today we are going to learn how to use python and drink some nice coffee",
             place: "Icon Club",
             picture: eventImg,
@@ -128,7 +128,7 @@ const eventsType = () => {
         {
             id: uuidv4(),
             event: "Language exchange club",
-            eventType: Type[0],
+            eventType: types[3],
             description: "Today we are going to learn how to use python and drink some nice coffee",
             place: "Icon Club",
             picture: eventImg,
