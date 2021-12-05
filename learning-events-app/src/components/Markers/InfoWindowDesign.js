@@ -3,10 +3,7 @@ import styled from "styled-components";
 import { Link, Route, url, useParams, useRouteMatch } from 'react-router-dom';
 import EventPage from '../../pages/EventPage';
 const InfoWindowDesign = ({ information }) => {
-    console.log(information.picture)
     let { path, url } = useRouteMatch();
-    console.log(path);
-    console.log(url);
     let { topicId } = useParams();
     return (
 

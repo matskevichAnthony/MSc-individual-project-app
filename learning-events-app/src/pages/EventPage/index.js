@@ -11,14 +11,11 @@ const EventPage = ({ state }) => {
     const dispatch = useDispatch();
 
     const clickHandler = () => {
-        console.log('clicked');
-        console.log(info.props);
         dispatch({ type: "USER_ATTEND_EVENT", payload: info.props });
     }
 
 
     const events = useSelector((state) => state.getEvents)
-    console.log(state)
     return (
         <Wrapper>
             <InnerBox>

@@ -1,22 +1,40 @@
 import { GoogleMap, useJsApiLoader, LoadScript } from '@react-google-maps/api';
+import Geocode from "react-geocode";
 import NormalMarker from '../Markers/NormalMarker';
-import { React, useState, useCallback } from 'react';
+import { React, useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import CreateEvent from '../CreateEvent';
 import { CreateEventButton } from './styled';
 
 const ApplicationMap = () => {
 
+    //geocode
+    useEffect(() => {
+        Geocode.setApiKey("AIzaSyC6nhjY1_Ft9Z4LxyfyHglsoD7ZpO9cWl4");
+        Geocode.setLanguage("en");
+        Geocode.setLocationType("ROOFTOP");
+        Geocode.enableDebug();
+        Geocode.fromLatLng("45.030852", "41.946360").then(
+            (response) => {
+                const address = response.results[0].formatted_address;
+                console.log(address + "addddresss");
+            },
+            (error) => {
+                console.error(error + "errrorrrrrr");
+            }
+        );
+
+
+    })
+
     const dispatch = useDispatch();
     const userState = useSelector((state) => state.userReducer);
     const [markerStatus, setMarkerStatus] = useState(false);
     const [markerIsChosen, setMarkerIsChosen] = useState(false);
     let GEO = {};
-    console.log(userState);
 
     const getLocation = (e) => {
         GEO = e.latLng.toJSON();
-        console.log(e.latLng.toJSON());
         setMarkerIsChosen(true);
         setMarkerStatus(!markerStatus);
         dispatch({ type: "GET_LOCATION", payload: e.latLng.toJSON() });

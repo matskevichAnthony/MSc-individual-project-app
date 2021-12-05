@@ -10,12 +10,9 @@ const CardComponent = ({ information }) => {
 
     let { eventId } = useParams();
     let { path, url } = useRouteMatch();
-    console.log(eventId);
-    console.log(information);
 
     const clickHandler = () => {
 
-        console.log(information.id);
     }
 
     return (

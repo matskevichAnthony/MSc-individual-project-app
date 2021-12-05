@@ -19,7 +19,6 @@ function App() {
   const location = useLocation();
   let { topicId } = useParams();
   let { path, url } = useRouteMatch();
-  console.log(topicId);
 
   return (
     <div className="App">
