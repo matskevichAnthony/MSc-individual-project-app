@@ -8,12 +8,11 @@ const InfoWindowDesign = ({ information }) => {
     return (
 
         <Wrapper>
-            <PicWrapper><img src={information.picture} /></PicWrapper>
+            {/* <PicWrapper><img src={information.picture} /></PicWrapper> */}
             <HeaderWrapper>{information.event}</HeaderWrapper>
             <TextWrapper>
                 address:<b>{information.address}</b>
                 <br />
-                available:<b>{information.placesAvailable}</b>
             </TextWrapper>
             <Link to={{
                 pathname: `events/${information.id}`, props: information

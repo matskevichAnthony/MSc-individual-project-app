@@ -11,7 +11,7 @@ const initialCenter = {
     lng: 37.63230442021678
 }
 
-const ApplicationMap = () => {
+const EventMap = ({ data, event_lat, event_lng }) => {
 
     const dispatch = useDispatch();
     const [markerStatus, setMarkerStatus] = useState(false);
@@ -19,38 +19,48 @@ const ApplicationMap = () => {
     const [center, setCenter] = useState(initialCenter);
     let GEO = {};
 
-    const getLocation = (e) => {
-
-        const mapOnCenterChangeHandler = (e) => {
-            if (map) {
-                const newCenter = map.getCenter();
-                const center = {
-                    lat: newCenter.lat(),
-                    lng: newCenter.lng()
-                }
-                setCenter(center);
-            }
-        }
-        mapOnCenterChangeHandler();
-
-        GEO = e.latLng.toJSON();
-        setMarkerIsChosen(true);
-        dispatch({ type: "GET_LOCATION", payload: e.latLng.toJSON() });
-    };
-
-    const data = useSelector((state) => state.getEvents1);
+    const lat = parseFloat(event_lat, 10);
+    const lng = parseFloat(event_lng, 10);
+    console.log(lat + "   " + lng);
 
     useEffect(() => {
-        dispatch(getEvents());
-    }, [dispatch])
+        setCenter({
+            lat: lat,
+            lng: lng,
+        })
+    }, [lat, lng])
+    // const getLocation = (e) => {
 
-    useEffect(() => {
-    }, [data]);
+    // const mapOnCenterChangeHandler = (e) => {
+    //     const newCenter = map.getCenter();
+    //     if (map) {
+    //         const center = {
+    //             lat: newCenter.lat(),
+    //             lng: newCenter.lng()
+    //         }
+    //         setCenter(center);
+    //     }
+    // }
+    // mapOnCenterChangeHandler();
+
+    // GEO = e.latLng.toJSON();
+    // setMarkerIsChosen(true);
+    // dispatch({ type: "GET_LOCATION", payload: e.latLng.toJSON() });
+    // };
+
+    // const data = useSelector((state) => state.getEvents1);
+
+    // useEffect(() => {
+    //     dispatch(getEvents());
+    // }, [dispatch])
+
+    // useEffect(() => {
+    // }, [data]);
 
 
     const containerStyle = {
         width: '100%',
-        height: '94vh'
+        height: '100%'
     };
 
     const { isLoaded } = useJsApiLoader({
@@ -76,28 +86,25 @@ const ApplicationMap = () => {
     }
 
     return isLoaded ? (
-        <GoogleMap style={{ cursor: 'pointer' }} onClick={markerStatus ? (e) => getLocation(e) : console.log("nope")}
+        <GoogleMap style={{ cursor: 'pointer' }}
 
             mapContainerStyle={containerStyle}
-            zoom={13}
+            zoom={16}
             onLoad={onLoad}
             onUnmount={onUnmount}
             options={defaultMapOptions}
             center={center}
         >
-            {data.map((event) =>
-                <NormalMarker self={event} iconSettings={{
-                    url: 'https://static.thenounproject.com/png/98497-200.png',
-                    scaledSize: new window.google.maps.Size(50, 50)
-                }} ></NormalMarker>
-            )}
+            <NormalMarker self={data} iconSettings={{
+                url: 'https://static.thenounproject.com/png/98497-200.png',
+                scaledSize: new window.google.maps.Size(50, 50)
+            }} ></NormalMarker>
 
             {
                 markerIsChosen ?
                     <CreateEvent
                         setMarkerStatus={setMarkerStatus}
                         markerStatus={markerStatus}
-                        information={GEO}
                         markerIsChosen={markerIsChosen}
                         setMarkerIsChosen={setMarkerIsChosen} />
                     :
@@ -112,4 +119,4 @@ const ApplicationMap = () => {
     ) : <></>
 }
 
-export default ApplicationMap
+export default EventMap;

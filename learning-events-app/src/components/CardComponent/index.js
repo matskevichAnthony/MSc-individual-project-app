@@ -1,26 +1,75 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { StyledButton, StyledLink } from "./styled";
 import { Card, Col } from 'react-bootstrap';
 import { useParams, useRouteMatch, path, url, Link, Route } from 'react-router-dom';
+import { FaHome, FaArrowUp } from "react-icons/fa";
 import EventPage from '../../pages/EventPage';
+import {
+    Wrapper,
+    ContentWrapper,
+    InnerWrapperButton,
+    InnerWrapperIcon,
+    InnerWrapperInfo,
+    InnerWrapperTitle,
+    IconWrapper,
+    StyledLink,
+    Title,
+    Date,
+    Location,
+    Owner,
+} from './styled';
 
 
 const CardComponent = ({ information }) => {
 
-    let { eventId } = useParams();
-    let { path, url } = useRouteMatch();
-
     const clickHandler = () => {
-
     }
 
     return (
-        <Col>
+
+        <Wrapper>
+            <ContentWrapper>
+                <InnerWrapperIcon>
+                    <IconWrapper>
+                        <FaHome />
+                    </IconWrapper>
+                </InnerWrapperIcon>
+                <InnerWrapperTitle>
+                    <Title><small>{information.title}</small></Title>
+                    <Date><small>{information.event_date}</small></Date>
+                </InnerWrapperTitle>
+                <InnerWrapperInfo>
+                    <Location>
+                        <IconWrapper small>
+                            <FaHome />
+                        </IconWrapper>
+                        <small>{information.place}</small>
+                    </Location>
+
+                    <Owner>
+                        <IconWrapper small>
+                            <FaHome />
+                        </IconWrapper>
+                        {information.user ? <small>{information.user.name}</small> : <small>Not found yet!</small>}
+                    </Owner>
+                </InnerWrapperInfo>
+                <InnerWrapperButton>
+                    <StyledLink to={{ pathname: `events/${information.id}` }}> <FaArrowUp style={{ fontSize: '1.5rem', color: "white" }} /> </StyledLink>
+                </InnerWrapperButton>
+            </ContentWrapper>
+        </Wrapper>
+
+
+    )
+
+}
+
+export default CardComponent
+
+{/* <Col>
             <Card>
-                <Card.Img variant="top" src={information.picture} />
                 <Card.Body>
-                    <Card.Title>{information.event}</Card.Title>
+                    <Card.Title>{information.title}</Card.Title>
                     <Card.Text>
                         {information.description}
                     </Card.Text>
@@ -30,12 +79,7 @@ const CardComponent = ({ information }) => {
                     }}><StyledButton onClick={() => clickHandler()}>click me</StyledButton></StyledLink>
                 </Card.Body>
                 <Card.Footer>
-                    <small className="text-muted">Last updated 3 mins ago</small>
+                    <small className="text-muted"></small>
                 </Card.Footer>
             </Card>
-        </Col>
-    )
-
-}
-
-export default CardComponent
+</Col> */}

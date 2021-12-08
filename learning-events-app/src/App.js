@@ -1,8 +1,10 @@
-import React from "react";
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect } from "react";
+import { useDispatch } from 'react-redux';
+import { checkLogin } from "./action/Auth";
+import { getEvents } from "./action/events";
 import Navigation from './components/Navigation'
 import Home from './pages/Home'
-import { Router, Switch, Route, useLocation, useParams, useRouteMatch } from 'react-router-dom';
+import { Switch, Route, useLocation, useParams, useRouteMatch } from 'react-router-dom';
 import GlobalStyle from "./components/GlobalStyle";
 import Settings from "./pages/Settings";
 import User from "./pages/User";
@@ -14,11 +16,18 @@ import MyEvents from "./pages/MyEvents";
 import { AnimatePresence } from 'framer-motion';
 
 function App() {
-  const counter = useSelector((state) => state.counter);
+
   const dispatch = useDispatch();
   const location = useLocation();
-  let { topicId } = useParams();
-  let { path, url } = useRouteMatch();
+
+
+  useEffect(() => {
+    dispatch(checkLogin());
+  }, [dispatch]);
+
+  // useEffect(() => {
+  //   dispatch(getEvents());
+  // }, [dispatch])
 
   return (
     <div className="App">

@@ -1,29 +1,57 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Geocode from "react-geocode";
 import { Wrapper } from "./styled";
 import { Form, Row, Col, Button, FloatingLabel } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from "uuid";
 import eventImg from '../../assets/eventsIcons/event1.jpg'
 import eventsType from "../../data/eventsType";
+import { addEvent } from "../../action/events";
+import { getEvents } from "../../action/events";
 
-const CreateEvent = ({ information }) => {
+const CreateEvent = ({ information, setMarkerStatus, markerStatus, markerIsChosen, setMarkerIsChosen }) => {
+
+
 
     const locationSelected = useSelector((state) => state.getLocation);
+    const events = useSelector((state) => state.getEvents1);
+    const [address, setAddress] = useState();
     console.log(locationSelected);
     const dispatch = useDispatch();
     const eventTypeData = eventsType();
     console.log(information);
+
+    //geocode
+    useEffect(() => {
+        Geocode.setApiKey("AIzaSyC6nhjY1_Ft9Z4LxyfyHglsoD7ZpO9cWl4");
+        Geocode.setLanguage("en");
+        Geocode.setLocationType("ROOFTOP");
+        Geocode.enableDebug();
+        Geocode.fromLatLng(locationSelected.lat, locationSelected.lng).then(
+            (response) => {
+                setAddress(response.results[0].formatted_address);
+            },
+            (error) => {
+                console.error(error + "errrorrrrrr");
+            }
+        );
+        dispatch(getEvents());
+    }, [locationSelected, dispatch]);
+
     const submitHandler = (e) => {
-        e.preventDefault();
-        console.log(e.target.eventName.value);
-        console.log(e.target.numberPeople.value);
-        console.log(e.target.address.value);
-        console.log(e.target.details.value);
-        console.log(e.target.place.value);
-        console.log(e.target.eventType.value);
-        console.log(e.target.age.value);
-        console.log(e.target.dateTime.value);
-        console.log(e.target.imgFile.value);
+        // e.preventDefault();
+
+        dispatch(addEvent(
+            1,
+            e.target.eventName.value,
+            e.target.details.value,
+            locationSelected.lat,
+            locationSelected.lng,
+            e.target.address.value,
+            e.target.place.value,
+            "2021-11-16 14:31:36",
+            e.target.price.value
+        ));
 
         const newEvent = {
             id: uuidv4(),
@@ -33,7 +61,7 @@ const CreateEvent = ({ information }) => {
             place: e.target.place.value,
             picture: eventImg,
             GEO: locationSelected,
-            address: e.target.address.value,
+            address: address,
             placesAvailable: e.target.numberPeople.value,
             minAge: e.target.age.value,
             price: e.target.price.value,
@@ -45,28 +73,10 @@ const CreateEvent = ({ information }) => {
         dispatch({ type: "USER_ADD_EVENT", payload: newEvent });
         dispatch({ type: "ADD_EVENT", payload: newEvent });
 
+        setMarkerIsChosen(!setMarkerIsChosen);
+        setMarkerStatus(!markerStatus);
 
-    }
-
-    const example = {
-        id: uuidv4(),
-        event: "Fucking shit",
-        eventType: eventsType[0],
-        description: "Today we are going to learn how to use python and drink some nice coffee",
-        place: "Icon Club",
-        picture: eventImg,
-        GEO: {
-            lat: 50.763338,
-            lng: 36.565466
-        },
-        address: "Uebak",
-        placesAvailable: 15,
-        minAge: 18,
-        price: "20$",
-        date: "11/10/2021",
-        time: "12:10",
-        isToggled: false,
-
+        window.location.reload();
     }
 
     return (
@@ -86,7 +96,7 @@ const CreateEvent = ({ information }) => {
 
                 <Form.Group className="mb-3" controlId="formGridAddress1">
                     <Form.Label>Address</Form.Label>
-                    <Form.Control name="address" placeholder="1234 Main St" />
+                    <Form.Control name="address" placeholder="1234 Main St" value={address} />
                 </Form.Group>
 
                 <FloatingLabel controlId="floatingTextarea2" label="Comments">

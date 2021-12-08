@@ -1,15 +1,28 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import styled from 'styled-components'
 import { Marker, InfoWindow } from '@react-google-maps/api';
 import { useSelector, useDispatch } from 'react-redux';
 import InfoWindowDesign from './InfoWindowDesign';
 
-const NormalMarker = ({ iconSettings, position, InfoText, self }) => {
+const NormalMarker = ({ iconSettings, self }) => {
 
     const [toggled, setToggled] = useState(false)
 
-    const events = useSelector((state) => state.getEvents);
-    const dispatch = useDispatch();
+    useEffect(() => {
+
+    }, [self])
+
+    console.log(self);
+    const lat = parseFloat(self.geo_lat, 10);
+    const lng = parseFloat(self.geo_lng, 10);
+    const position =
+    {
+        lat: lat,
+        lng: lng,
+    };
+    console.log(lat);
+    console.log(lng);
+
     return (
         <div>
             <Marker onClick={() => setToggled(!toggled)} position={position} icon={iconSettings}>

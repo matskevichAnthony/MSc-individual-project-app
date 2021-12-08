@@ -9,7 +9,7 @@ const userData = () => {
         email: "matskevich.anton777@yandex.ru",
         password: 123456,
         dateOfBirth: "07.07.1998",
-        isLogged: true,
+        isLogged: false,
         preferences: [
             {
                 type: "Social",

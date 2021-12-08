@@ -8,7 +8,7 @@ const eventsType = () => {
         {
             id: uuidv4(),
             event: "Programming and Coffee",
-            eventType: types[0],
+            eventType: types[0].event,
             description: "Today we are going to learn how to use python and drink some nice coffee",
             place: "Icon Club",
             picture: eventImg,
@@ -28,7 +28,7 @@ const eventsType = () => {
         {
             id: uuidv4(),
             event: "Singing lessons",
-            eventType: types[1],
+            eventType: types[1].event,
             description: "Today we are going to learn how to use python and drink some nice coffee",
             place: "Icon Club",
             picture: eventImg,
@@ -48,7 +48,7 @@ const eventsType = () => {
         {
             id: uuidv4(),
             event: "Drawing lessons",
-            eventType: types[2],
+            eventType: types[2].event,
             description: "Today we are going to learn how to use python and drink some nice coffee",
             place: "Icon Club",
             picture: eventImg,
@@ -68,7 +68,7 @@ const eventsType = () => {
         {
             id: uuidv4(),
             event: "Cooking time",
-            eventType: types[0],
+            eventType: types[0].event,
             description: "Today we are going to learn how to use python and drink some nice coffee",
             place: "Gordon Ramsay",
             picture: eventImg,

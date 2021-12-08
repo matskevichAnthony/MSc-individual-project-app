@@ -4,19 +4,19 @@ const eventsType = () => {
 
     return [
         {
-            id: uuidv4(),
+            id: 1,
             event: "Technology"
         },
         {
-            id: uuidv4(),
+            id: 2,
             event: "Languages"
         },
         {
-            id: uuidv4(),
+            id: 3,
             event: "Cooking"
         },
         {
-            id: uuidv4(),
+            id: 4,
             event: "Social"
         },
 

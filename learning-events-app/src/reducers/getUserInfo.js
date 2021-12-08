@@ -1,7 +1,6 @@
 import userData from "../data/userData";
 
 const userReducer = (state = userData(), action) => {
-    console.log(action);
     switch (action.type) {
         case 'GET_USER_INFO':
             return state;

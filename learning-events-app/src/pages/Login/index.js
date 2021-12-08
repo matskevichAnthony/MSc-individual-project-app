@@ -1,14 +1,52 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { LoginDetailsWrapper, LoginWrapper } from './styled';
+import { useDispatch } from 'react-redux';
+import { authenticate } from '../../action/Auth';
 import { Form, Button } from 'react-bootstrap'
 const Login = () => {
 
+    const [userInfo, setUserInfo] = useState({});
+    const dispatch = useDispatch();
+
+    const emailRef = useRef();
+    const passwordRef = useRef();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const { value: emailValue } = emailRef.current;
+        const { value: passwordValue } = passwordRef.current;
+
+        const userData = {
+            email: emailValue,
+            password: passwordValue,
+        };
+
+        fetch('http://localhost/events_backend/public/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(userData)
+        }).then(response => {
+            return response.json();
+        }).then((data) => {
+            const info = data;
+            console.log(info.data.jwt);
+            setUserInfo({
+                email: emailValue,
+                password: passwordValue,
+                jwt: info.data.jwt,
+            });
+            console.log(emailValue, passwordValue, info.data.jwt);
+            dispatch(authenticate(emailValue, passwordValue, info.data.jwt));
+            window.location.reload();
+        })
+    }
+
     return (
         <LoginWrapper>
-            <Form>
+            <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
+                    <Form.Control ref={emailRef} type="email" placeholder="Enter email" />
                     <Form.Text className="text-muted">
                         We'll never share your email with anyone else.
                     </Form.Text>
@@ -16,7 +54,7 @@ const Login = () => {
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Control ref={passwordRef} type="password" placeholder="Password" />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
                     <Form.Check type="checkbox" label="Check me out" />

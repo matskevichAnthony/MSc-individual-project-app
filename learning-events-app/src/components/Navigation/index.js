@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { useLocation } from "react-router";
 const Nav = () => {
     const { pathname } = useLocation();
-    const userState = useSelector((state) => state.userReducer);
+    const userState = useSelector((state) => state.authReducer);
 
     return (
         <StyledNav>
@@ -20,7 +20,7 @@ const Nav = () => {
                     <Link to="/events">Events</Link>
                     <Line transition={{ duration: 0.75 }} initial={{ width: "0%" }} animate={{ width: pathname === '/work' ? "50%" : "0%" }} />
                 </li>
-                {userState.isLogged ?
+                {userState.isAuth ?
                     <>
                         <li>
                             <Link to="/myevents">My events</Link>
