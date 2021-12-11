@@ -3,22 +3,23 @@ import UserEvents from '../../components/UserEvents.js';
 import { useSelector, useDispatch } from 'react-redux';
 import { getEvents } from '../../action/events.js';
 import { getEventsAttended } from '../../action/eventsAttended.js';
+import { getEventsManaged } from '../../action/events.js';
 import { Wrapper, ContentWrapper, WindowWrapper, CarouselWrapper } from './styled.js';
 import Carousel from '../../components/Carousel'
 
 const MyEvents = () => {
     const events = useSelector((state) => state.getEvents1);
     const eventsAttended = useSelector((state) => state.getEventsAttended);
-    const [allEvents, setAllEvents] = useState(events);
+    const eventsManaged = useSelector((state) => state.getEventsManaged);
     const dispatch = useDispatch();
     console.log(eventsAttended);
     useEffect(() => {
         dispatch(getEvents());
         dispatch(getEventsAttended());
+        dispatch(getEventsManaged());
     }, [dispatch])
 
     useEffect(() => {
-        setAllEvents(events);
     }, [events, dispatch])
 
     return (
@@ -30,14 +31,12 @@ const MyEvents = () => {
                         <Carousel information={eventsAttended} />
                     </CarouselWrapper>
                 </WindowWrapper>
-                {/* <UserEvents information={userState.eventsAttend} /> */}
                 <WindowWrapper>
                     <h1>Events you manage: </h1>
                     <CarouselWrapper>
-                        <Carousel information={events} />
+                        <Carousel information={eventsManaged} />
                     </CarouselWrapper>
                 </WindowWrapper>
-                {/* <UserEvents information={userState.eventsManage} /> */}
             </ContentWrapper>
         </Wrapper>
     )

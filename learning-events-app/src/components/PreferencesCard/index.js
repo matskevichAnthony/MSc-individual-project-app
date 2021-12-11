@@ -1,10 +1,10 @@
 import React from 'react';
 import { Wrapper, Title, StyledInput, InputWrapper } from './styled';
 
-const PreferencesCard = () => {
+const PreferencesCard = ({ title }) => {
     return (
         <Wrapper>
-            <Title>Technology</Title>
+            <Title>{title}</Title>
             <InputWrapper>
                 <StyledInput type="range" />
             </InputWrapper>

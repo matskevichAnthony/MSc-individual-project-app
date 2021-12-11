@@ -15,10 +15,10 @@ const EventPage = () => {
         dispatch(addEventAttended(eventData));
     }
 
-    console.log(eventData)
     useEffect(() => {
         dispatch(getEvent(id.eventId))
     }, []);
+
     return (
         <Wrapper>
             <InnerBox>
@@ -28,7 +28,14 @@ const EventPage = () => {
                     <HeaderInfo>{eventData.title}</HeaderInfo>
                 </HeaderBox>
                 <HeaderBox>
-                    <MainInfo><InformationDiv><b>About the event</b><br />{eventData.description}<br /><JoinButton onClick={clickHandler}>Join!</JoinButton> </InformationDiv></MainInfo>
+                    <MainInfo><InformationDiv><b>About the event</b>
+                        <br />{eventData.description}
+                        <br />
+                        how many people will go? <b>{eventData && eventData.user_attends.length}</b>
+                        <br />
+                        <JoinButton onClick={clickHandler}>Join!</JoinButton>
+                    </InformationDiv>
+                    </MainInfo>
                     <SideInfo>
                         <InformationSideDiv>
                             <IconWrapper> <FaDollarSign /> {eventData.price}  </IconWrapper>

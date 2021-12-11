@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import eventsType from '../../data/eventsType';
 import { Row, DropdownButton, Dropdown } from 'react-bootstrap';
 import CardComponent from '../../components/CardComponent';
-import { getEvents } from '../../action/events';
+import { getEvents, getEventTypes } from '../../action/events';
 import { Scrollbars } from 'react-custom-scrollbars';
 import Carousel from '../../components/Carousel';
 import {
@@ -23,19 +22,20 @@ const Events = () => {
 
     const events = useSelector((state) => state.getEvents1);
     const dispatch = useDispatch();
-    const eventTypes = eventsType();
+    const eventTypes = useSelector((state) => state.getEventTypes);
     const [allEvents, setAllEvents] = useState(events);
     const clickHandler = (e) => {
         if (e.target.innerHTML === "All") {
             setAllEvents(events);
             return;
         }
-        let filtered = events.filter(event => event.eventType === e.target.innerHTML);
+        let filtered = events.filter(event => event.event_type.name === e.target.innerHTML);
         setAllEvents(filtered);
     }
 
     useEffect(() => {
         dispatch(getEvents());
+        dispatch(getEventTypes());
     }, [dispatch])
 
     useEffect(() => {
@@ -57,13 +57,13 @@ const Events = () => {
                     <DropdownButton id="dropdown-item-button" title="Categories">
                         <Dropdown.Item as="button" onClick={clickHandler}>All</Dropdown.Item>
                         {eventTypes.map((e) =>
-                            <Dropdown.Item as="button" onClick={(e) => clickHandler(e)}>{e.event}</Dropdown.Item>
+                            <Dropdown.Item as="button" onClick={(e) => clickHandler(e)}>{e.name}</Dropdown.Item>
                         )}
                     </DropdownButton>
                     <DropdownButton id="dropdown-item-button" title="Categories">
                         <Dropdown.Item as="button" onClick={clickHandler}>All</Dropdown.Item>
                         {eventTypes.map((e) =>
-                            <Dropdown.Item as="button" onClick={(e) => clickHandler(e)}>{e.event}</Dropdown.Item>
+                            <Dropdown.Item as="button" onClick={(e) => clickHandler(e)}>{e.name}</Dropdown.Item>
                         )}
                     </DropdownButton>
                 </FilterWrapper>

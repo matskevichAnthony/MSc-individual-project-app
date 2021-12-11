@@ -2,13 +2,13 @@ const defaultState = [{
     lol: "lol",
 }];
 
-const getEventsManagedReducer = (state = defaultState, action) => {
+const getEventTypesReducer = (state = defaultState, action) => {
     switch (action.type) {
-        case 'GET_EVENTS_MANAGED':
+        case 'GET_EVENT_TYPES':
             return action.payload;
         default:
             return state;
     }
 }
 
-export default getEventsManagedReducer;
+export default getEventTypesReducer;
