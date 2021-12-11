@@ -3,6 +3,7 @@ import NormalMarker from '../Markers/NormalMarker';
 import { React, useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import CreateEvent from '../CreateEvent';
+import { FaHome, FaArrowUp, FaUser, FaLocationArrow } from "react-icons/fa";
 import { CreateEventButton } from './styled';
 import { getEvents } from '../../action/events';
 
@@ -85,7 +86,7 @@ const ApplicationMap = () => {
             options={defaultMapOptions}
             center={center}
         >
-            {data.map((event) =>
+            {data.length > 0 && data.map((event) =>
                 <NormalMarker self={event} iconSettings={{
                     url: 'https://static.thenounproject.com/png/98497-200.png',
                     scaledSize: new window.google.maps.Size(50, 50)

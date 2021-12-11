@@ -29,34 +29,6 @@ const EventMap = ({ data, event_lat, event_lng }) => {
             lng: lng,
         })
     }, [lat, lng])
-    // const getLocation = (e) => {
-
-    // const mapOnCenterChangeHandler = (e) => {
-    //     const newCenter = map.getCenter();
-    //     if (map) {
-    //         const center = {
-    //             lat: newCenter.lat(),
-    //             lng: newCenter.lng()
-    //         }
-    //         setCenter(center);
-    //     }
-    // }
-    // mapOnCenterChangeHandler();
-
-    // GEO = e.latLng.toJSON();
-    // setMarkerIsChosen(true);
-    // dispatch({ type: "GET_LOCATION", payload: e.latLng.toJSON() });
-    // };
-
-    // const data = useSelector((state) => state.getEvents1);
-
-    // useEffect(() => {
-    //     dispatch(getEvents());
-    // }, [dispatch])
-
-    // useEffect(() => {
-    // }, [data]);
-
 
     const containerStyle = {
         width: '100%',

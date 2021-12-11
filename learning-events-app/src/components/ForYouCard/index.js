@@ -11,7 +11,7 @@ import {
     StyledLink,
 } from './styled';
 
-import { FaHome, FaArrowUp, FaStar } from "react-icons/fa";
+import { FaHome, FaLocationArrow, FaStar, FaUserAlt, FaClock } from "react-icons/fa";
 
 const ForYouCard = ({ information }) => {
     return (
@@ -20,13 +20,13 @@ const ForYouCard = ({ information }) => {
             <Wrapper>
                 <TitleWrapper><small>{information.title}</small></TitleWrapper>
                 <InfoWrapper>
-                    <IconDataWrapper><FaHome style={{ color: "tomato" }} />
+                    <IconDataWrapper><FaLocationArrow style={{ color: "tomato" }} />
                         <small>{information.place}</small>
                     </IconDataWrapper>
-                    <IconDataWrapper><FaHome style={{ color: "tomato" }} />
+                    <IconDataWrapper><FaUserAlt style={{ color: "tomato" }} />
                         {information.user ? <small>{information.user.name}</small> : <small>Not found yet!</small>}
                     </IconDataWrapper>
-                    <IconDataWrapper><FaHome style={{ color: "tomato" }} />
+                    <IconDataWrapper><FaClock style={{ color: "tomato" }} />
                         <small>{information.event_date}</small>
                     </IconDataWrapper>
                 </InfoWrapper>

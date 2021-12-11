@@ -83,3 +83,25 @@ export const getEvent = (id) => {
 
     }
 };
+
+export const getEventsManaged = () => {
+
+    return async dispatch => {
+        const authData = cookie.load("authData");
+
+        const response = await fetch("http://localhost/events_backend/public/events?managed=1", {
+            method: 'GET',
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + authData.token,
+            }
+        });
+        const json = await response.json();
+        dispatch({
+            type: 'GET_EVENTS_MANAGED',
+            payload: json
+        })
+
+    }
+};

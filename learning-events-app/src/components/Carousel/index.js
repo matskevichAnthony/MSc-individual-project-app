@@ -33,7 +33,7 @@ const Carousel = ({ information }) => {
             autoPlaySpeed={3500}
             infinite={true}
         >
-            {information.map((e) => {
+            {information.length > 0 && information.map((e) => {
                 return <ForYouCard information={e} />
             })}
         </ReactCarousel>

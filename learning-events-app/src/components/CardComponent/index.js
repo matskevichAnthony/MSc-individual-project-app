@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Card, Col } from 'react-bootstrap';
 import { useParams, useRouteMatch, path, url, Link, Route } from 'react-router-dom';
-import { FaHome, FaArrowUp } from "react-icons/fa";
+import { FaHome, FaArrowUp, FaUser, FaLocationArrow } from "react-icons/fa";
 import EventPage from '../../pages/EventPage';
 import {
     Wrapper,
@@ -41,14 +41,14 @@ const CardComponent = ({ information }) => {
                 <InnerWrapperInfo>
                     <Location>
                         <IconWrapper small>
-                            <FaHome />
+                            <FaLocationArrow />
                         </IconWrapper>
                         <small>{information.place}</small>
                     </Location>
 
                     <Owner>
                         <IconWrapper small>
-                            <FaHome />
+                            <FaUser />
                         </IconWrapper>
                         {information.user ? <small>{information.user.name}</small> : <small>Not found yet!</small>}
                     </Owner>

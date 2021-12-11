@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Marker, InfoWindow } from '@react-google-maps/api';
 import { useSelector, useDispatch } from 'react-redux';
 import InfoWindowDesign from './InfoWindowDesign';
+import { FaHome, FaArrowUp, FaUser, FaLocationArrow } from "react-icons/fa";
 
 const NormalMarker = ({ iconSettings, self }) => {
 
@@ -25,7 +26,7 @@ const NormalMarker = ({ iconSettings, self }) => {
 
     return (
         <div>
-            <Marker onClick={() => setToggled(!toggled)} position={position} icon={iconSettings}>
+            <Marker onClick={() => setToggled(!toggled)} position={position} icon={FaHome}>
                 {toggled ? <InfoWindow onCloseClick={() => setToggled(!toggled)}><Wrapper><InfoWindowDesign information={self} /></Wrapper></InfoWindow> : ""}
             </Marker>
         </div >

@@ -14,6 +14,7 @@ import {
     ScrollWrapper,
     FilterWrapper,
     ExtraCarouselWrapper,
+    UpperSectionWrapper,
 }
     from './styled';
 
@@ -44,12 +45,14 @@ const Events = () => {
     return (
         <Wrapper>
             <ContentWrapper>
-                <HeaderWrapper>Events that you might like</HeaderWrapper>
-                <CarouselWrapper>
-                    <ExtraCarouselWrapper>
-                        <Carousel information={allEvents} />
-                    </ExtraCarouselWrapper>
-                </CarouselWrapper>
+                <UpperSectionWrapper>
+                    <HeaderWrapper>Events that you might like</HeaderWrapper>
+                    <CarouselWrapper>
+                        <ExtraCarouselWrapper>
+                            <Carousel information={allEvents} />
+                        </ExtraCarouselWrapper>
+                    </CarouselWrapper>
+                </UpperSectionWrapper>
                 <FilterWrapper>
                     <DropdownButton id="dropdown-item-button" title="Categories">
                         <Dropdown.Item as="button" onClick={clickHandler}>All</Dropdown.Item>
@@ -66,7 +69,7 @@ const Events = () => {
                 </FilterWrapper>
                 <ScrollWrapper>
                     <Scrollbars style={{ width: '100%', height: '100%' }}>
-                        {allEvents.map((e) => {
+                        {allEvents.length > 0 && allEvents.map((e) => {
                             return <CardComponent information={e} />
                         })}
                     </Scrollbars>
