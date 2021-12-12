@@ -16,6 +16,10 @@ const ApplicationMap = () => {
     const [markerStatus, setMarkerStatus] = useState(false);
     const [markerIsChosen, setMarkerIsChosen] = useState(false);
     const [center, setCenter] = useState(initialCenter);
+    const userState = useSelector((state) => state.authReducer);
+
+    const data = useSelector((state) => state.getEvents1);
+
     let GEO = {};
 
     const getLocation = (e) => {
@@ -37,7 +41,6 @@ const ApplicationMap = () => {
         dispatch({ type: "GET_LOCATION", payload: e.latLng.toJSON() });
     };
 
-    const data = useSelector((state) => state.getEvents1);
 
     useEffect(() => {
         dispatch(getEvents());
@@ -104,7 +107,9 @@ const ApplicationMap = () => {
             }
 
             {
-                markerStatus ? <></> : <CreateEventButton onClick={() => setMarkerStatus(!markerStatus)}>Create Event!</CreateEventButton>
+                !markerStatus && userState.isAuth
+                    ? <CreateEventButton onClick={() => setMarkerStatus(!markerStatus)}>Create Event!</CreateEventButton>
+                    : <></>
             }
 
         </GoogleMap >

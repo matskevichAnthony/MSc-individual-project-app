@@ -1,5 +1,3 @@
-import Events from "../data/Events";
-
 const defaultState = [{
     lol: "lol",
 }];

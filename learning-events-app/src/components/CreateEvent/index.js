@@ -5,16 +5,16 @@ import { Form, Row, Col, Button, FloatingLabel } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from "uuid";
 import eventImg from '../../assets/eventsIcons/event1.jpg'
-import eventsType from "../../data/eventsType";
 import { addEvent } from "../../action/events";
 import { getEvents } from "../../action/events";
+import { getEventTypes } from "../../action/events";
 
 const CreateEvent = ({ information, setMarkerStatus, markerStatus, markerIsChosen, setMarkerIsChosen }) => {
     const locationSelected = useSelector((state) => state.getLocation);
     const events = useSelector((state) => state.getEvents1);
+    const eventTypes = useSelector((state) => state.getEventTypes);
     const [address, setAddress] = useState();
     const dispatch = useDispatch();
-    const eventTypeData = eventsType();
     //geocode
     useEffect(() => {
         Geocode.setApiKey("AIzaSyC6nhjY1_Ft9Z4LxyfyHglsoD7ZpO9cWl4");
@@ -30,6 +30,7 @@ const CreateEvent = ({ information, setMarkerStatus, markerStatus, markerIsChose
             }
         );
         dispatch(getEvents());
+        dispatch(getEventTypes());
     }, [locationSelected, dispatch]);
 
     const submitHandler = (e) => {
@@ -111,10 +112,9 @@ const CreateEvent = ({ information, setMarkerStatus, markerStatus, markerIsChose
                     <Form.Group as={Col} controlId="formGridState">
                         <Form.Label>Event type</Form.Label>
                         <Form.Select name="eventType" defaultValue="Choose...">
-                            <option>{eventTypeData[0].event}</option>
-                            <option>{eventTypeData[1].event}</option>
-                            <option>{eventTypeData[2].event}</option>
-                            <option>{eventTypeData[3].event}</option>
+                            {eventTypes.map((type) => {
+                                return <option>{type.name}</option>
+                            })}
                         </Form.Select>
                     </Form.Group>
 

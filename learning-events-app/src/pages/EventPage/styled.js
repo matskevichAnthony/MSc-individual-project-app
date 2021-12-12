@@ -27,7 +27,7 @@ export const HeaderImg = styled.img`
     object-fit: cover;
 `;
 export const HeaderInfo = styled.div`
-    width: 35%;
+    width: 100%;
     height: 100%;
     background-color: tomato;
     display: flex;

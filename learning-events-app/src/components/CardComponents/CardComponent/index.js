@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaHome, FaArrowUp, FaUser, FaLocationArrow } from "react-icons/fa";
 import EventPage from '../../../pages/EventPage';
+import { useSelector } from 'react-redux';
 import {
     Wrapper,
     ContentWrapper,
@@ -18,6 +19,8 @@ import {
 
 
 const CardComponent = ({ information }) => {
+
+    const userState = useSelector((state) => state.authReducer);
 
     const clickHandler = () => {
     }
@@ -50,7 +53,13 @@ const CardComponent = ({ information }) => {
                     </Owner>
                 </InnerWrapperInfo>
                 <InnerWrapperButton>
-                    <StyledLink to={{ pathname: `events/${information.id}` }}> <FaArrowUp style={{ fontSize: '1.5rem', color: "white" }} /> </StyledLink>
+                    {userState.isAuth
+                        ?
+                        <StyledLink to={{ pathname: `events/${information.id}` }}> <FaArrowUp style={{ fontSize: '1.5rem', color: "white" }} /> </StyledLink>
+                        :
+                        <StyledLink to={{ pathname: `/login` }}> <FaArrowUp style={{ fontSize: '1.5rem', color: "white" }} /> </StyledLink>
+
+                    }
                 </InnerWrapperButton>
             </ContentWrapper>
         </Wrapper>

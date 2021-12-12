@@ -1,6 +1,8 @@
-import Events from "../data/Events";
+const initialState = {
+    title: "none"
+};
 
-const getEventsReducer = (state = Events(), action) => {
+const getEventsReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case 'MARKER_TOGGLE':

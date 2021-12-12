@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import {
     Wrapper,
     TitleWrapper,
@@ -14,6 +15,7 @@ import {
 import { FaHome, FaLocationArrow, FaStar, FaUserAlt, FaClock } from "react-icons/fa";
 
 const ForYouCard = ({ information }) => {
+    const userState = useSelector((state) => state.authReducer);
     return (
         <ExtraWrapper>
             <StarWrapper style={{ color: "white" }}><FaStar /></StarWrapper>
@@ -31,7 +33,12 @@ const ForYouCard = ({ information }) => {
                     </IconDataWrapper>
                 </InfoWrapper>
                 <ButtonWrapper>
-                    <StyledLink to={{ pathname: `events/${information.id}` }}><StyledButton>about</StyledButton></StyledLink>
+                    {userState.isAuth
+                        ? <StyledLink to={{ pathname: `events/${information.id}` }}><StyledButton>about</StyledButton></StyledLink>
+                        : <StyledLink to={{ pathname: `/login` }}><StyledButton>about</StyledButton></StyledLink>
+                    }
+
+
                 </ButtonWrapper>
             </Wrapper>
         </ExtraWrapper>

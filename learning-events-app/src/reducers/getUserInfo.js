@@ -1,6 +1,5 @@
-import userData from "../data/userData";
 
-const userReducer = (state = userData(), action) => {
+const userReducer = (state = {}, action) => {
     switch (action.type) {
         case 'GET_USER_INFO':
             return state;

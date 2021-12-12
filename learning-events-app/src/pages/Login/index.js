@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { LoginDetailsWrapper, LoginWrapper } from './styled';
 import { useDispatch } from 'react-redux';
 import { authenticate } from '../../action/Auth';
@@ -47,8 +48,8 @@ const Login = () => {
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control ref={emailRef} type="email" placeholder="Enter email" />
-                    <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
+                    <Form.Text className="text-white">
+                        Not registered?   <Link to="/register">Click here.</Link>
                     </Form.Text>
                 </Form.Group>
 

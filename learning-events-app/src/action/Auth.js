@@ -4,16 +4,22 @@ import cookie from "react-cookies";
 
 export const register = (userData) => {
     return async (dispatch) => {
+        const data = new URLSearchParams();
+        Object.keys(userData).forEach(key => {
+            data.append(key, userData[key]);
+        });
 
         fetch('http://localhost/events_backend/public/auth/register', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(userData)
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+            },
+            body: data,
         }).then(() => {
             console.log("CREATED NEW USER!");
         })
 
-        dispatch({ type: "USER_REGISTER", payload: "" })
+        dispatch({ type: "USER_REGISTER", payload: "" });
     }
 }
 

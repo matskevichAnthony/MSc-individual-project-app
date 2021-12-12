@@ -40,7 +40,6 @@ const EventPage = () => {
             <InnerBox>
                 <HeaderBox>
                     <Link to="/"><GoBackButton><FaArrowLeft /></GoBackButton></Link>
-                    <HeaderImg></HeaderImg>
                     <HeaderInfo>{eventData.title}</HeaderInfo>
                 </HeaderBox>
                 <HeaderBox>

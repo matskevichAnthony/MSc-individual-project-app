@@ -8,10 +8,13 @@ const InfoWindowDesign = ({ information }) => {
     return (
 
         <Wrapper>
-            {/* <PicWrapper><img src={information.picture} /></PicWrapper> */}
-            <HeaderWrapper>{information.event}</HeaderWrapper>
+            <HeaderWrapper>{information.title}</HeaderWrapper>
             <TextWrapper>
                 address:<b>{information.address}</b>
+                <br />
+                place:<b>{information.place}</b>
+                <br />
+                date:<b>{information.event_date}</b>
                 <br />
             </TextWrapper>
             <Link to={{
@@ -44,6 +47,8 @@ const PicWrapper = styled.div`
 
 const HeaderWrapper = styled.h3`
     padding:0.5rem, 0.5rem,0.5rem,0.5rem;
+    text-align:center;
+    color:tomato;
 `;
 
 const TextWrapper = styled.div`
