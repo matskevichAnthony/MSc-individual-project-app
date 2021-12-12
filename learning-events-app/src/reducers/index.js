@@ -1,5 +1,4 @@
 import isLogged from './isLogged';
-import getEventsReducer from './getEvents';
 import ToggleMarker from './ToggleMarker'
 import userReducer from './getUserInfo';
 import { combineReducers } from 'redux';

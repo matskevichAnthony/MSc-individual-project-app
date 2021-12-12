@@ -36,6 +36,6 @@ const ForYouCard = ({ information }) => {
             </Wrapper>
         </ExtraWrapper>
     )
-}
+};
 
 export default ForYouCard;

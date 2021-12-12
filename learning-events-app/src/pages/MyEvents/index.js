@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import UserEvents from '../../components/UserEvents.js';
 import { useSelector, useDispatch } from 'react-redux';
 import { getEvents } from '../../action/events.js';
 import { getEventsAttended } from '../../action/eventsAttended.js';
@@ -12,7 +11,6 @@ const MyEvents = () => {
     const eventsAttended = useSelector((state) => state.getEventsAttended);
     const eventsManaged = useSelector((state) => state.getEventsManaged);
     const dispatch = useDispatch();
-    console.log(eventsAttended);
     useEffect(() => {
         dispatch(getEvents());
         dispatch(getEventsAttended());

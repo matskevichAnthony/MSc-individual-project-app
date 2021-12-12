@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactCarousel from 'react-multi-carousel';
-import { StyledImage } from './styled';
 import 'react-multi-carousel/lib/styles.css';
-import ForYouCard from '../ForYouCard';
+import ForYouCard from '../CardComponents/ForYouCard';
 
 const responsive = {
     superLargeDesktop: {

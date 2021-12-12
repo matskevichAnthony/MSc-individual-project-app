@@ -36,8 +36,6 @@ export const addEvent = (data_id, data_title, data_description, data_lat, data_l
             price: data_price,
         };
 
-        console.log(eventData)
-
         const authData = cookie.load("authData");
 
         const response = await fetch("http://localhost/events_backend/public/events", {
@@ -51,7 +49,6 @@ export const addEvent = (data_id, data_title, data_description, data_lat, data_l
         });
         const json = await response.json();
         console.log("ADDED NEW ONE !!!!!!!")
-        console.log(json)
         dispatch({
             type: 'ADD_EVENTS1',
             payload: json

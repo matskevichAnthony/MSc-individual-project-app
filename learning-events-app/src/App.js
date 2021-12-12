@@ -6,7 +6,6 @@ import Navigation from './components/Navigation'
 import Home from './pages/Home'
 import { Switch, Route, useLocation, useParams, useRouteMatch } from 'react-router-dom';
 import GlobalStyle from "./components/GlobalStyle";
-import Settings from "./pages/Settings";
 import User from "./pages/User";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
@@ -25,10 +24,6 @@ function App() {
     dispatch(checkLogin());
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   dispatch(getEvents());
-  // }, [dispatch])
-
   return (
     <div className="App">
       <GlobalStyle />
@@ -43,9 +38,6 @@ function App() {
           </Route>
           <Route path={`/events/:eventId`} exact>
             <EventPage />
-          </Route>
-          <Route path="/settings" exact>
-            <Settings />
           </Route>
           <Route path="/user" exact>
             <User />

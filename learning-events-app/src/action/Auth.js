@@ -2,6 +2,21 @@ import cookie from "react-cookies";
 
 //ASYNC REQUEST TO CHECK WETHER I AM LOGGED OR NAH, I NEED TO CHECK IF TOKEN IS NOT EXPIRED YET
 
+export const register = (userData) => {
+    return async (dispatch) => {
+
+        fetch('http://localhost/events_backend/public/auth/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(userData)
+        }).then(() => {
+            console.log("CREATED NEW USER!");
+        })
+
+        dispatch({ type: "USER_REGISTER", payload: "" })
+    }
+}
+
 export const authenticate = (login, password, token) => {
     console.log(token + " IT IS A TOKEN");
     return (dispatch) => {

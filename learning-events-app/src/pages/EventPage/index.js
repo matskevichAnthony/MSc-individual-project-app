@@ -2,11 +2,27 @@ import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router';
-import { Wrapper, InnerBox, HeaderBox, HeaderImg, HeaderInfo, SideInfo, MainInfo, InformationDiv, InformationSideDiv, IconWrapper, MapWrapper, JoinButton, GoBackButton } from './styled';
 import { FaDollarSign, FaLocationArrow, FaHome, FaCalendarAlt, FaClock, FaArrowLeft } from "react-icons/fa";
 import { getEvent } from '../../action/events';
 import { addEventAttended } from '../../action/eventsAttended';
-import EventMap from '../../components/EventMap';
+import EventMap from '../../components/MapComponents/EventMap';
+import {
+    Wrapper,
+    InnerBox,
+    HeaderBox,
+    HeaderImg,
+    HeaderInfo,
+    SideInfo,
+    MainInfo,
+    InformationDiv,
+    InformationSideDiv,
+    IconWrapper,
+    MapWrapper,
+    JoinButton,
+    GoBackButton
+}
+    from './styled';
+
 const EventPage = () => {
     let id = useParams();
     const dispatch = useDispatch();

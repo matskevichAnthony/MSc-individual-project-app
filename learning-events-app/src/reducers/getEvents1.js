@@ -4,7 +4,6 @@ const defaultState = [{
     lol: "lol",
 }];
 
-
 const getEventsReducer1 = (state = defaultState, action) => {
     console.log(action);
     switch (action.type) {

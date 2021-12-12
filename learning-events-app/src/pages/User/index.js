@@ -1,4 +1,5 @@
 import React from 'react';
+import PreferencesCard from '../../components/CardComponents/PreferencesCard';
 import {
     UserWrapper,
     UserImage,
@@ -12,15 +13,8 @@ import {
     InnerInputWrapper,
     PreferencesCardsWrapper,
 } from './styled';
-import { Form, Col, Row, Button } from 'react-bootstrap';
-import PreferencesCard from '../../components/PreferencesCard';
-import userData from '../../data/userData';
-
-
 
 const User = () => {
-
-    const data = userData();
 
     return (
         <UserWrapper>
@@ -49,9 +43,7 @@ const User = () => {
             </ContentWrapper>
         </UserWrapper >
     );
-
 }
-
 export default User;
 
 

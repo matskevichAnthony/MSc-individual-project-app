@@ -1,7 +1,7 @@
 import React from 'react';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import CardComponent from '../CardComponent';
+import CardComponent from '../CardComponents/CardComponent';
 import { Wrapper } from './styled';
 const responsive = {
     desktop: {
@@ -31,10 +31,8 @@ const UserEvents = ({ deviceType, information }) => {
             {information.map((card) =>
                 <CardComponent information={card} />
             )}
-
         </Carousel>
     )
+};
 
-}
-
-export default UserEvents
+export default UserEvents;

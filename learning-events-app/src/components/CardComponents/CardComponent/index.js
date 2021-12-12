@@ -1,9 +1,6 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { Card, Col } from 'react-bootstrap';
-import { useParams, useRouteMatch, path, url, Link, Route } from 'react-router-dom';
 import { FaHome, FaArrowUp, FaUser, FaLocationArrow } from "react-icons/fa";
-import EventPage from '../../pages/EventPage';
+import EventPage from '../../../pages/EventPage';
 import {
     Wrapper,
     ContentWrapper,
@@ -26,7 +23,6 @@ const CardComponent = ({ information }) => {
     }
 
     return (
-
         <Wrapper>
             <ContentWrapper>
                 <InnerWrapperIcon>
@@ -58,11 +54,8 @@ const CardComponent = ({ information }) => {
                 </InnerWrapperButton>
             </ContentWrapper>
         </Wrapper>
-
-
     )
-
-}
+};
 
 export default CardComponent
 

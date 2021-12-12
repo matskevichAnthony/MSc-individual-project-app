@@ -10,17 +10,11 @@ import { addEvent } from "../../action/events";
 import { getEvents } from "../../action/events";
 
 const CreateEvent = ({ information, setMarkerStatus, markerStatus, markerIsChosen, setMarkerIsChosen }) => {
-
-
-
     const locationSelected = useSelector((state) => state.getLocation);
     const events = useSelector((state) => state.getEvents1);
     const [address, setAddress] = useState();
-    console.log(locationSelected);
     const dispatch = useDispatch();
     const eventTypeData = eventsType();
-    console.log(information);
-
     //geocode
     useEffect(() => {
         Geocode.setApiKey("AIzaSyC6nhjY1_Ft9Z4LxyfyHglsoD7ZpO9cWl4");
@@ -150,9 +144,6 @@ const CreateEvent = ({ information, setMarkerStatus, markerStatus, markerIsChose
             </Form>
         </Wrapper>
     )
-
-
-
-}
+};
 
 export default CreateEvent;

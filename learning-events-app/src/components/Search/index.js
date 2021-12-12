@@ -9,6 +9,6 @@ const Search = () => {
             <input />
         </div>
     )
-}
+};
 
 export default Search;

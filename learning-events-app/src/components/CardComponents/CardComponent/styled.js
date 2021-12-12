@@ -85,7 +85,7 @@ export const InnerWrapperButton = styled.div`
 `;
 
 export const StyledLink = styled(Link)`
-`
+`;
 
 export const StyledButton = styled.button`
     width: 100%;

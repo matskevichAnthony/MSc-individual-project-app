@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Row, DropdownButton, Dropdown } from 'react-bootstrap';
-import CardComponent from '../../components/CardComponent';
+import CardComponent from '../../components/CardComponents/CardComponent';
 import { getEvents, getEventTypes } from '../../action/events';
 import { Scrollbars } from 'react-custom-scrollbars';
 import Carousel from '../../components/Carousel';
@@ -14,12 +14,11 @@ import {
     FilterWrapper,
     ExtraCarouselWrapper,
     UpperSectionWrapper,
+    FilterButton,
 }
     from './styled';
 
 const Events = () => {
-
-
     const events = useSelector((state) => state.getEvents1);
     const dispatch = useDispatch();
     const eventTypes = useSelector((state) => state.getEventTypes);
@@ -54,7 +53,12 @@ const Events = () => {
                     </CarouselWrapper>
                 </UpperSectionWrapper>
                 <FilterWrapper>
-                    <DropdownButton id="dropdown-item-button" title="Categories">
+
+                    {eventTypes.map((e) =>
+                        <FilterButton onClick={(e) => clickHandler(e)}>{e.name}</FilterButton>
+                    )}
+
+                    {/* <DropdownButton id="dropdown-item-button" title="Categories">
                         <Dropdown.Item as="button" onClick={clickHandler}>All</Dropdown.Item>
                         {eventTypes.map((e) =>
                             <Dropdown.Item as="button" onClick={(e) => clickHandler(e)}>{e.name}</Dropdown.Item>
@@ -65,7 +69,7 @@ const Events = () => {
                         {eventTypes.map((e) =>
                             <Dropdown.Item as="button" onClick={(e) => clickHandler(e)}>{e.name}</Dropdown.Item>
                         )}
-                    </DropdownButton>
+                    </DropdownButton> */}
                 </FilterWrapper>
                 <ScrollWrapper>
                     <Scrollbars style={{ width: '100%', height: '100%' }}>
@@ -77,7 +81,6 @@ const Events = () => {
             </ContentWrapper>
         </Wrapper>
     )
-
 }
 
 export default Events;

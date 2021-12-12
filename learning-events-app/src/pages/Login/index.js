@@ -2,7 +2,8 @@ import React, { useState, useRef } from 'react';
 import { LoginDetailsWrapper, LoginWrapper } from './styled';
 import { useDispatch } from 'react-redux';
 import { authenticate } from '../../action/Auth';
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button } from 'react-bootstrap';
+
 const Login = () => {
 
     const [userInfo, setUserInfo] = useState({});
@@ -35,7 +36,6 @@ const Login = () => {
                 password: passwordValue,
                 jwt: info.data.jwt,
             });
-            console.log(emailValue, passwordValue, info.data.jwt);
             dispatch(authenticate(emailValue, passwordValue, info.data.jwt));
             window.location.reload();
         })

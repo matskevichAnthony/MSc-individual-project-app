@@ -75,5 +75,25 @@ export const FilterWrapper = styled.div`
     width: 100%;
     height: 10%;
     display: flex;
+    padding-top:0.7rem;
+    padding-bottom:0.7rem;
     justify-content: space-around;
-`
+`;
+
+export const FilterButton = styled.button`
+    width: 10rem;
+    height: 2.5rem;
+    border-radius:20px;
+    border: none;
+    background: white;
+    color: tomato;
+    font-weight:600;
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+    transition:all 0.23s linear;
+    &:hover{
+        background: tomato;
+        color:white;
+    }
+`;

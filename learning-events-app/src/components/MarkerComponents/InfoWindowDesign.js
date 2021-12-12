@@ -17,57 +17,44 @@ const InfoWindowDesign = ({ information }) => {
             <Link to={{
                 pathname: `events/${information.id}`, props: information
             }}><ButtonToEvent>more</ButtonToEvent></Link>
-
         </Wrapper>
-
     )
-
-}
+};
 
 export default InfoWindowDesign
 
 const Wrapper = styled.div`
-width: 15rem;
-height: 5rem;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-
+    width: 15rem;
+    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 `;
 
 const PicWrapper = styled.div`
-
-width: 100%;
-
-img{
-    object-fit: cover;
-    height:5rem;
     width: 100%;
-    padding-bottom: 1rem;
-}
-
+    img{
+        object-fit: cover;
+        height:5rem;
+        width: 100%;
+        padding-bottom: 1rem;
+    }
 `;
 
 const HeaderWrapper = styled.h3`
-
-padding:0.5rem, 0.5rem,0.5rem,0.5rem;
-
+    padding:0.5rem, 0.5rem,0.5rem,0.5rem;
 `;
 
 const TextWrapper = styled.div`
-
-font-size: 1rem;
-padding: 1rem;
-
+    font-size: 1rem;
+    padding: 1rem;
 `;
 
 const ButtonToEvent = styled.button`
-
-height: 2rem;
-width: 4rem;
-border:none;
-text-align: center;
-align-items: center;
-
-`
+    height: 2rem;
+    width: 4rem;
+    border:none;
+    text-align: center;
+    align-items: center;
+`;

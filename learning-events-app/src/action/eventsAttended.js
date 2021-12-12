@@ -27,7 +27,6 @@ export const addEventAttended = (event) => {
     return async dispatch => {
 
         const authData = cookie.load("authData");
-        console.log(event);
 
         const response = await fetch(`http://localhost/events_backend/public/events/${event.id}/join`, {
             method: 'GET',
@@ -39,7 +38,6 @@ export const addEventAttended = (event) => {
         });
         const json = await response.json();
         console.log("ADDED NEW ONE !!!!!!!")
-        console.log(json)
         dispatch({
             type: 'ADD_EVENT_ATTENDED',
             payload: event
