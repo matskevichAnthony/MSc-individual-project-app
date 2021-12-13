@@ -13,19 +13,29 @@ export const getEvents = () => {
         });
         const json = await response.json();
         dispatch({
-            type: 'GET_EVENTS1',
+            type: 'GET_EVENTS',
             payload: json
         })
 
     }
 };
 
-export const addEvent = (data_id, data_title, data_description, data_lat, data_lng, data_address, data_place, data_date, data_price) => {
-
+export const addEvent = (
+    data_id,
+    data_title,
+    data_description,
+    data_lat,
+    data_lng,
+    data_address,
+    data_place,
+    data_date,
+    data_price,
+    event_type,
+) => {
     return async dispatch => {
-
+        console.log(data_date);
         const eventData = {
-            event_type_id: 1,
+            event_type_id: event_type,
             title: data_title,
             description: data_description,
             geo_lat: data_lat,
@@ -53,7 +63,28 @@ export const addEvent = (data_id, data_title, data_description, data_lat, data_l
             type: 'ADD_EVENTS1',
             payload: json
         })
+    }
+};
 
+export const deleteEvent = (id) => {
+    console.log(id);
+    return async dispatch => {
+        const authData = cookie.load("authData");
+
+        const response = await fetch(`http://localhost/events_backend/public/events/${id}`, {
+            method: 'DELETE',
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + authData.token,
+            }
+        });
+        const json = await response.json();
+        dispatch({
+            type: 'GET_EVENT',
+            payload: json,
+        })
+        window.location.reload();
     }
 };
 
@@ -75,7 +106,6 @@ export const getEvent = (id) => {
             type: 'GET_EVENT',
             payload: json
         })
-
     }
 };
 

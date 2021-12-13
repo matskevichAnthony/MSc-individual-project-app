@@ -1,16 +1,20 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router';
-import { FaDollarSign, FaLocationArrow, FaHome, FaCalendarAlt, FaClock, FaArrowLeft } from "react-icons/fa";
+import { FaDollarSign, FaLocationArrow, FaHome, FaCalendarAlt, FaArrowLeft, } from "react-icons/fa";
 import { getEvent } from '../../action/events';
+import { getEventsManaged } from '../../action/events';
+import { getEventsAttended } from '../../action/eventsAttended';
+import { leaveEventAttended } from '../../action/eventsAttended';
 import { addEventAttended } from '../../action/eventsAttended';
+import { deleteEvent } from '../../action/events';
 import EventMap from '../../components/MapComponents/EventMap';
 import {
     Wrapper,
     InnerBox,
     HeaderBox,
-    HeaderImg,
     HeaderInfo,
     SideInfo,
     MainInfo,
@@ -19,22 +23,57 @@ import {
     IconWrapper,
     MapWrapper,
     JoinButton,
-    GoBackButton
+    GoBackButton,
+    IconInnerWrapper,
+    TextInnerWrapper,
 }
     from './styled';
 
 const EventPage = () => {
     let id = useParams();
     const dispatch = useDispatch();
-    const eventData = useSelector((state) => state.getEvent);
-    const clickHandler = () => {
+    const history = useHistory();
+
+    const [eventManaged, setEventManaged] = useState(false);
+    const [eventAttended, setEventAttended] = useState(false);
+
+    const eventData = useSelector((state) => state.getEvents.event);
+    const eventsAttend = useSelector((state) => state.getEvents.attends);
+    const eventsManaged = useSelector((state) => state.getEvents.managed);
+
+    const isManaged = useMemo(() => {
+        if (eventsManaged) {
+            return eventsManaged.find(event => event.id === eventData.id)
+        }
+    }, [eventData, eventsManaged]);
+
+    const isAttended = useMemo(() => {
+        if (eventsAttend) {
+            return eventsAttend.find(event => event.id === eventData.id)
+        }
+    }, [eventData, eventsAttend]);
+
+    const joinHandler = () => {
         dispatch(addEventAttended(eventData));
-    }
+        history.push('/myevents');
+    };
+    const leaveHandler = () => {
+        dispatch(leaveEventAttended(eventData));
+        history.goBack();
+    };
+    const deleteHandler = () => {
+        dispatch(deleteEvent(eventData.id));
+        history.goBack();
+    };
 
     useEffect(() => {
         dispatch(getEvent(id.eventId))
-    }, []);
+        dispatch(getEventsManaged());
+        dispatch(getEventsAttended());
+    }, [dispatch, id.eventId,]);
 
+    console.log(!!isAttended === true);
+    console.log(!!isManaged === true);
     return (
         <Wrapper>
             <InnerBox>
@@ -46,17 +85,32 @@ const EventPage = () => {
                     <MainInfo><InformationDiv><b>About the event</b>
                         <br />{eventData.description}
                         <br />
-                        how many people will go? <b>{eventData && eventData.user_attends.length}</b>
+                        how many people will go? <b>{eventData.user_attends && eventData.user_attends.length}</b>
                         <br />
-                        <JoinButton onClick={clickHandler}>Join!</JoinButton>
+                        {!!isAttended === false && !!isManaged === true
+                            ? <></>
+                            : [
+                                (isAttended && !!isManaged === false
+                                    ? <JoinButton onClick={leaveHandler}>leave</JoinButton>
+                                    : <JoinButton onClick={joinHandler}>Join!</JoinButton>
+                                )
+                            ]
+
+                        }
+                        {isManaged
+                            ?
+                            <JoinButton onClick={deleteHandler}>deleteEvent</JoinButton>
+                            : <></>
+                        }
                     </InformationDiv>
                     </MainInfo>
                     <SideInfo>
                         <InformationSideDiv>
-                            <IconWrapper> <FaDollarSign /> {eventData.price}  </IconWrapper>
-                            <IconWrapper><FaHome /> {eventData.place}</IconWrapper>
-                            <IconWrapper><FaLocationArrow /> {eventData.address}</IconWrapper>
-                            <IconWrapper><FaCalendarAlt /> {eventData.event_date}</IconWrapper>
+                            <IconWrapper> <IconInnerWrapper><FaDollarSign /> </IconInnerWrapper><TextInnerWrapper>{eventData.price}</TextInnerWrapper></IconWrapper>
+                            <IconWrapper><IconInnerWrapper><FaHome /> </IconInnerWrapper><TextInnerWrapper>{eventData.place}</TextInnerWrapper></IconWrapper>
+                            <IconWrapper><IconInnerWrapper><FaLocationArrow /></IconInnerWrapper> <TextInnerWrapper>{eventData.address}</TextInnerWrapper></IconWrapper>
+                            <IconWrapper><IconInnerWrapper><FaCalendarAlt /> </IconInnerWrapper><TextInnerWrapper>{eventData.event_date}</TextInnerWrapper></IconWrapper>
+                            <IconWrapper><IconInnerWrapper><FaCalendarAlt /> </IconInnerWrapper><TextInnerWrapper>{eventData.user && eventData.user.name}</TextInnerWrapper></IconWrapper>
                         </InformationSideDiv>
                     </SideInfo>
                 </HeaderBox>

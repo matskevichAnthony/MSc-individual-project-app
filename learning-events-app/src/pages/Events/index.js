@@ -15,21 +15,24 @@ import {
     ExtraCarouselWrapper,
     UpperSectionWrapper,
     FilterButton,
+    CarouselWrapepr,
 }
     from './styled';
 
 const Events = () => {
-    const events = useSelector((state) => state.getEvents1);
+    const events = useSelector((state) => state.getEvents.events);
     const dispatch = useDispatch();
-    const eventTypes = useSelector((state) => state.getEventTypes);
+    const eventTypes = useSelector((state) => state.getEvents.event_type);
     const [allEvents, setAllEvents] = useState(events);
     const clickHandler = (e) => {
+        console.log(e.target.innerHTML);
         if (e.target.innerHTML === "All") {
             setAllEvents(events);
             return;
+        } else {
+            let filtered = events.filter(event => event.event_type.name === e.target.innerHTML);
+            setAllEvents(filtered);
         }
-        let filtered = events.filter(event => event.event_type.name === e.target.innerHTML);
-        setAllEvents(filtered);
     }
 
     useEffect(() => {
@@ -39,7 +42,7 @@ const Events = () => {
 
     useEffect(() => {
         setAllEvents(events);
-    }, [events, dispatch])
+    }, [events, dispatch]);
 
     return (
         <Wrapper>
@@ -53,23 +56,10 @@ const Events = () => {
                     </CarouselWrapper>
                 </UpperSectionWrapper>
                 <FilterWrapper>
-
+                    <FilterButton onClick={clickHandler}>All</FilterButton>
                     {eventTypes.map((e) =>
                         <FilterButton onClick={(e) => clickHandler(e)}>{e.name}</FilterButton>
                     )}
-
-                    {/* <DropdownButton id="dropdown-item-button" title="Categories">
-                        <Dropdown.Item as="button" onClick={clickHandler}>All</Dropdown.Item>
-                        {eventTypes.map((e) =>
-                            <Dropdown.Item as="button" onClick={(e) => clickHandler(e)}>{e.name}</Dropdown.Item>
-                        )}
-                    </DropdownButton>
-                    <DropdownButton id="dropdown-item-button" title="Categories">
-                        <Dropdown.Item as="button" onClick={clickHandler}>All</Dropdown.Item>
-                        {eventTypes.map((e) =>
-                            <Dropdown.Item as="button" onClick={(e) => clickHandler(e)}>{e.name}</Dropdown.Item>
-                        )}
-                    </DropdownButton> */}
                 </FilterWrapper>
                 <ScrollWrapper>
                     <Scrollbars style={{ width: '100%', height: '100%' }}>

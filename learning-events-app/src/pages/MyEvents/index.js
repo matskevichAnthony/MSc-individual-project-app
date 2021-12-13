@@ -7,9 +7,9 @@ import { Wrapper, ContentWrapper, WindowWrapper, CarouselWrapper } from './style
 import Carousel from '../../components/Carousel'
 
 const MyEvents = () => {
-    const events = useSelector((state) => state.getEvents1);
-    const eventsAttended = useSelector((state) => state.getEventsAttended);
-    const eventsManaged = useSelector((state) => state.getEventsManaged);
+    const events = useSelector((state) => state.getEvents.events);
+    const eventsAttended = useSelector((state) => state.getEvents.attends);
+    const eventsManaged = useSelector((state) => state.getEvents.managed);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getEvents());

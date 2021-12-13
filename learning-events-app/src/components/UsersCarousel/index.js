@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactCarousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import ForYouCard from '../CardComponents/ForYouCard';
-
+import UserCard from '../CardComponents/UserCard';
 const responsive = {
     superLargeDesktop: {
         breakpoint: { max: 4000, min: 3000 },
@@ -22,7 +21,7 @@ const responsive = {
     },
 };
 
-const Carousel = ({ information }) => {
+const UserCarousel = ({ information }) => {
     console.log(information);
     return (
         <ReactCarousel
@@ -33,11 +32,17 @@ const Carousel = ({ information }) => {
             autoPlaySpeed={3500}
             infinite={true}
         >
-            {information.map((e) => {
-                return <ForYouCard information={e} />
-            })}
+            {
+
+                information ? information.map((e) => {
+                    return <UserCard information={e} />
+                })
+                    :
+                    <></>
+
+            }
         </ReactCarousel>
     );
 };
 
-export default Carousel;
+export default UserCarousel;

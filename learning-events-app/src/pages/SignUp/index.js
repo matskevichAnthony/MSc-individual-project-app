@@ -88,27 +88,12 @@ const SignUp = () => {
 
     }
 
-
-    // const fetchData = () => {
-    //     fetch('http://localhost/events_backend/public/auth/register', {
-    //         method: 'POST',
-    //         headers: { 'Content-Type': 'application/json' },
-    //         body: JSON.stringify(userInfo)
-    //     }).then(() => {
-    //         console.log("CREATED NEW USER!");
-    //     })
-    // }
-
-
-    console.log(userInfo)
-
-
     return (
         <SignUpWrapper>
-            Register in EduEvents
+            <b>Register in EduEvents</b>
             <ContentWrapper>
                 <LowerSectionWrapper>
-                    <Form onSubmit={handleSubmit}>
+                    <Form>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Username</Form.Label>
                             <Form.Control ref={loginRef} type="text" placeholder="Enter username" />
@@ -127,11 +112,8 @@ const SignUp = () => {
                             <Form.Label>Repeat password</Form.Label>
                             <Form.Control ref={repeatPasswordRef} type="password" placeholder="Password" />
                         </Form.Group>
-                        <Button variant="primary" type="submit">
-                            Submit
-                        </Button>
                     </Form>
-                    Preferences
+                    Set your preferences for better recommendations
                     <PreferencesCardsWrapper>
                         <PreferencesCard reference={techRef} title="Technology" />
                         <PreferencesCard reference={scienceRef} title="Science" />
@@ -143,7 +125,7 @@ const SignUp = () => {
                             return <PreferencesCard title={type.name} />
                         })} */}
                     </PreferencesCardsWrapper>
-                    <StyledButton>submit</StyledButton>
+                    <StyledButton onClick={handleSubmit}>submit</StyledButton>
                 </LowerSectionWrapper>
             </ContentWrapper>
         </SignUpWrapper>

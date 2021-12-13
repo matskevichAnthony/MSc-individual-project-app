@@ -2,8 +2,9 @@ import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import NormalMarker from '../../MarkerComponents/NormalMarker';
 import { React, useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { getEventTypes } from '../../../action/events';
 import CreateEvent from '../../CreateEvent';
-import { CreateEventButton } from './styled';
+import { CreateEventButton, FilterWrapper, FilterButton } from './styled';
 import { getEvents } from '../../../action/events';
 
 const initialCenter = {
@@ -13,12 +14,15 @@ const initialCenter = {
 
 const ApplicationMap = () => {
     const dispatch = useDispatch();
+
     const [markerStatus, setMarkerStatus] = useState(false);
     const [markerIsChosen, setMarkerIsChosen] = useState(false);
     const [center, setCenter] = useState(initialCenter);
     const userState = useSelector((state) => state.authReducer);
-
-    const data = useSelector((state) => state.getEvents1);
+    const data = useSelector((state) => state.getEvents.events);
+    const eventTypes = useSelector((state) => state.getEvents.event_type);
+    const [allEvents, setAllEvents] = useState(data);
+    console.log(allEvents);
 
     let GEO = {};
 
@@ -44,15 +48,18 @@ const ApplicationMap = () => {
 
     useEffect(() => {
         dispatch(getEvents());
-    }, [dispatch]);
+        dispatch(getEventTypes());
+        setAllEvents(data)
+    }, []);
 
     useEffect(() => {
-    }, [data]);
+        setAllEvents(data)
+    }, [dispatch, data]);
 
 
     const containerStyle = {
         width: '100%',
-        height: '94vh',
+        height: '90vh',
     };
 
     const { isLoaded } = useJsApiLoader({
@@ -77,9 +84,20 @@ const ApplicationMap = () => {
         draggableCursor: !markerStatus ? '' : 'crosshair',
     };
 
+
+    const clickHandler = (e) => {
+        console.log(e.target.innerHTML);
+        if (e.target.innerHTML === "All") {
+            setAllEvents(data);
+            return;
+        } else {
+            let filtered = data.filter(event => event.event_type.name === e.target.innerHTML);
+            setAllEvents(filtered);
+        }
+    }
+
     return isLoaded ? (
         <GoogleMap style={{ cursor: 'pointer' }} onClick={markerStatus ? (e) => getLocation(e) : console.log("nope")}
-
             mapContainerStyle={containerStyle}
             zoom={13}
             onLoad={onLoad}
@@ -87,7 +105,7 @@ const ApplicationMap = () => {
             options={defaultMapOptions}
             center={center}
         >
-            {data.length > 0 && data.map((event) =>
+            {allEvents.length > 0 && allEvents.map((event) =>
                 <NormalMarker self={event} iconSettings={{
                     url: 'https://static.thenounproject.com/png/98497-200.png',
                     scaledSize: new window.google.maps.Size(50, 50)
@@ -111,6 +129,10 @@ const ApplicationMap = () => {
                     ? <CreateEventButton onClick={() => setMarkerStatus(!markerStatus)}>Create Event!</CreateEventButton>
                     : <></>
             }
+            <FilterWrapper><FilterButton onClick={clickHandler}>All</FilterButton>
+                {eventTypes && eventTypes.map((e) =>
+                    <FilterButton onClick={(e) => clickHandler(e)}>{e.name}</FilterButton>
+                )}</FilterWrapper>
 
         </GoogleMap >
     ) : <></>

@@ -9,6 +9,8 @@ const userReducer = (state = {}, action) => {
             return { ...state, eventsAttend: [...state.eventsAttend, action.payload] };
         case 'USER_ADD_EVENT':
             return { ...state, eventsManage: [...state.eventsManage, action.payload] };
+        case 'GET_PREFERENCES':
+
         default:
             return state;
     }

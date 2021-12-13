@@ -1,5 +1,5 @@
 import React from 'react';
-import MapComponent from '../components/MapComponents/ApplicationMap';
+import MapComponent from '../../components/MapComponents/ApplicationMap';
 
 const Home = () => {
     return (

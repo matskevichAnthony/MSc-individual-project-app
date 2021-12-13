@@ -9,12 +9,17 @@ import { addEvent } from "../../action/events";
 import { getEvents } from "../../action/events";
 import { getEventTypes } from "../../action/events";
 
-const CreateEvent = ({ information, setMarkerStatus, markerStatus, markerIsChosen, setMarkerIsChosen }) => {
+const CreateEvent = ({ setMarkerStatus, markerStatus, markerIsChosen, setMarkerIsChosen }) => {
     const locationSelected = useSelector((state) => state.getLocation);
-    const events = useSelector((state) => state.getEvents1);
-    const eventTypes = useSelector((state) => state.getEventTypes);
+    const eventTypes = useSelector((state) => state.getEvents.event_type);
     const [address, setAddress] = useState();
+    const [eventTypeId, setEventTypeId] = useState(1);
     const dispatch = useDispatch();
+
+    const changeHandler = (e) => {
+        setEventTypeId(e.target.value);
+    };
+
     //geocode
     useEffect(() => {
         Geocode.setApiKey("AIzaSyC6nhjY1_Ft9Z4LxyfyHglsoD7ZpO9cWl4");
@@ -35,7 +40,8 @@ const CreateEvent = ({ information, setMarkerStatus, markerStatus, markerIsChose
 
     const submitHandler = (e) => {
         // e.preventDefault();
-
+        const formatedDateTime = `${e.target.date.value} ${e.target.time.value}:00`
+        console.log(eventTypeId);
         dispatch(addEvent(
             1,
             e.target.eventName.value,
@@ -44,8 +50,9 @@ const CreateEvent = ({ information, setMarkerStatus, markerStatus, markerIsChose
             locationSelected.lng,
             e.target.address.value,
             e.target.place.value,
-            "2021-11-16 14:31:36",
-            e.target.price.value
+            formatedDateTime,
+            e.target.price.value,
+            eventTypeId,
         ));
 
         const newEvent = {
@@ -54,28 +61,21 @@ const CreateEvent = ({ information, setMarkerStatus, markerStatus, markerIsChose
             eventType: e.target.eventType.value,
             description: e.target.details.value,
             place: e.target.place.value,
-            picture: eventImg,
             GEO: locationSelected,
             address: address,
-            placesAvailable: e.target.numberPeople.value,
-            minAge: e.target.age.value,
             price: e.target.price.value,
-            date: e.target.dateTime.value,
-            time: e.target.dateTime.value,
+            date: formatedDateTime,
             isToggled: false,
         }
 
-        dispatch({ type: "USER_ADD_EVENT", payload: newEvent });
         dispatch({ type: "ADD_EVENT", payload: newEvent });
-
         setMarkerIsChosen(!setMarkerIsChosen);
         setMarkerStatus(!markerStatus);
-
-        window.location.reload();
     }
 
     return (
         <Wrapper>
+            <h2 style={{ color: "tomato", textAlign: "center" }}>Create new event!</h2>
             <Form onSubmit={(e) => submitHandler(e)}>
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="formGridEmail">
@@ -84,8 +84,6 @@ const CreateEvent = ({ information, setMarkerStatus, markerStatus, markerIsChose
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formGridPassword">
-                        <Form.Label>Number of people</Form.Label>
-                        <Form.Control name="numberPeople" type="text" placeholder="Number of people" />
                     </Form.Group>
                 </Row>
 
@@ -111,16 +109,11 @@ const CreateEvent = ({ information, setMarkerStatus, markerStatus, markerIsChose
 
                     <Form.Group as={Col} controlId="formGridState">
                         <Form.Label>Event type</Form.Label>
-                        <Form.Select name="eventType" defaultValue="Choose...">
+                        <Form.Select name="eventType" defaultValue="Choose..." onChange={changeHandler}>
                             {eventTypes.map((type) => {
-                                return <option>{type.name}</option>
+                                return <option value={type.id}>{type.name}</option>
                             })}
                         </Form.Select>
-                    </Form.Group>
-
-                    <Form.Group as={Col} controlId="formGridZip">
-                        <Form.Label>Min Age</Form.Label>
-                        <Form.Control name="age" />
                     </Form.Group>
                 </Row>
 
@@ -128,21 +121,18 @@ const CreateEvent = ({ information, setMarkerStatus, markerStatus, markerIsChose
 
                     <Form.Label>Date</Form.Label>
                     <br />
-                    <input name="dateTime" id="datetime" type="datetime-local" />
+                    <input name="date" id="date" type="date" />
+                    <input name="time" id="time" type="time" />
                 </Form.Group>
                 <Form.Label>Price</Form.Label>
                 <br />
                 <Form.Control name="price" />
-                <Form.Group controlId="formFile" className="mb-3">
-                    <Form.Label>Default file input example</Form.Label>
-                    <Form.Control name="imgFile" type="file" />
-                </Form.Group>
-
+                <br />
                 <Button onClick variant="primary" type="submit">
                     Submit
                 </Button>
             </Form>
-        </Wrapper>
+        </Wrapper >
     )
 };
 

@@ -1,7 +1,5 @@
 import cookie from "react-cookies";
 
-//ASYNC REQUEST TO CHECK WETHER I AM LOGGED OR NAH, I NEED TO CHECK IF TOKEN IS NOT EXPIRED YET
-
 export const register = (userData) => {
     return async (dispatch) => {
         const data = new URLSearchParams();
@@ -21,7 +19,7 @@ export const register = (userData) => {
 
         dispatch({ type: "USER_REGISTER", payload: "" });
     }
-}
+};
 
 export const authenticate = (login, password, token) => {
     console.log(token + " IT IS A TOKEN");
@@ -48,7 +46,6 @@ export const authenticate = (login, password, token) => {
 export const checkLogin = () => {
     return (dispatch) => {
         const authData = cookie.load("authData");
-
         const checkToken = async (token) => {
             console.log(token);
             return fetch("http://localhost/events_backend/public/auth/me", {
@@ -83,8 +80,6 @@ export const checkLogin = () => {
         } else {
             console.log("no data provided")
         }
-
-
     };
 };
 
@@ -101,4 +96,31 @@ export const logout = () => {
             },
         });
     };
+};
+
+export const updateUser = (userInfo) => {
+
+    return async dispatch => {
+
+        const authData = cookie.load("authData");
+
+        const response = await fetch("http://localhost/events_backend/public/auth/me", {
+            method: 'PUT',
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + authData.token
+            },
+            body: JSON.stringify(userInfo)
+        });
+        const json = await response.json();
+        console.log("***");
+        console.log("updated");
+        console.log("***");
+        dispatch({
+            type: 'UPDATE_USER',
+            payload: '',
+        })
+
+    }
 };

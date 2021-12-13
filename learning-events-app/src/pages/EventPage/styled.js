@@ -21,11 +21,13 @@ export const HeaderBox = styled.div`
     background-color: gray;
     display: flex;
 `;
+
 export const HeaderImg = styled.img`
     width: 65%;
     height: 100%;
     object-fit: cover;
 `;
+
 export const HeaderInfo = styled.div`
     width: 100%;
     height: 100%;
@@ -35,12 +37,14 @@ export const HeaderInfo = styled.div`
     align-items: center;
     text-align: center;
     font-weight: bold;
+    font-size:2rem;
+    color:white;
 `;
 
 export const SideInfo = styled.div`
     width: 35%;
     height: 100%;
-    background-color: white;
+    background-color: red;
     display: flex;
     justify-content: center;
 `;
@@ -52,28 +56,62 @@ export const MainInfo = styled.div`
     display: flex;
     justify-content: center;
 `;
+
+export const CarouselWrapepr = styled.div`
+    width: 20rem;
+    height: 10rem;
+    background: pink;
+`;
+
 export const InformationDiv = styled.div`
     padding-top: 1rem;
     width: 80%;
     height: 100%;
 `;
+export const AboutWrapper = styled.div`
+    width: 100%;
+    height: 15%;
+    background: pink;
+`;
+
+export const DescriptionWrapper = styled.div`
+    width: 100%;
+    height: 40%;
+`;
 
 export const InformationSideDiv = styled.div`
     padding-top: 1rem;
-    width: 80%;
+    width: 100%;
     height: 100%;
     background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    svg{
-        margin-bottom: 1.6rem;
-    }
+    gap:0.6rem;
 `;
 
 export const IconWrapper = styled.div`
     display: flex;
-    background-color: white;
+    justify-content:space-between;
+`;
+
+export const TextInnerWrapper = styled.div`
+    width: 80%;
+    height: 100%;
+`;
+
+export const IconInnerWrapper = styled.div`
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    svg{
+        color:tomato;
+        width:1.2rem;
+        height: 1.2rem;
+    }
 `;
 
 export const MapWrapper = styled.div`
