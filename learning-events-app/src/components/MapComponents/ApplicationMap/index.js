@@ -3,6 +3,7 @@ import NormalMarker from '../../MarkerComponents/NormalMarker';
 import { React, useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getEventTypes } from '../../../action/events';
+import { getPreferences } from '../../../action/preferences';
 import CreateEvent from '../../CreateEvent';
 import { CreateEventButton, FilterWrapper, FilterButton } from './styled';
 import { getEvents } from '../../../action/events';
@@ -21,6 +22,7 @@ const ApplicationMap = () => {
     const userState = useSelector((state) => state.authReducer);
     const data = useSelector((state) => state.getEvents.events);
     const eventTypes = useSelector((state) => state.getEvents.event_type);
+    const preferences = useSelector((state) => state.getEvents.preferences);
     const [allEvents, setAllEvents] = useState(data);
     console.log(allEvents);
 
@@ -49,12 +51,13 @@ const ApplicationMap = () => {
     useEffect(() => {
         dispatch(getEvents());
         dispatch(getEventTypes());
+        dispatch(getPreferences());
         setAllEvents(data)
     }, []);
 
     useEffect(() => {
         setAllEvents(data)
-    }, [dispatch, data]);
+    }, [dispatch, data, preferences]);
 
 
     const containerStyle = {
@@ -106,10 +109,7 @@ const ApplicationMap = () => {
             center={center}
         >
             {allEvents.length > 0 && allEvents.map((event) =>
-                <NormalMarker self={event} iconSettings={{
-                    url: 'https://static.thenounproject.com/png/98497-200.png',
-                    scaledSize: new window.google.maps.Size(50, 50)
-                }} ></NormalMarker>
+                <NormalMarker self={event} preferences={preferences}></NormalMarker>
             )}
 
             {

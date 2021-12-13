@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import Geocode from "react-geocode";
 import { Wrapper } from "./styled";
 import { Form, Row, Col, Button, FloatingLabel } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from "uuid";
-import eventImg from '../../assets/eventsIcons/event1.jpg'
 import { addEvent } from "../../action/events";
 import { getEvents } from "../../action/events";
 import { getEventTypes } from "../../action/events";
@@ -12,6 +12,7 @@ import { getEventTypes } from "../../action/events";
 const CreateEvent = ({ setMarkerStatus, markerStatus, markerIsChosen, setMarkerIsChosen }) => {
     const locationSelected = useSelector((state) => state.getLocation);
     const eventTypes = useSelector((state) => state.getEvents.event_type);
+    const history = useHistory();
     const [address, setAddress] = useState();
     const [eventTypeId, setEventTypeId] = useState(1);
     const dispatch = useDispatch();
@@ -71,6 +72,7 @@ const CreateEvent = ({ setMarkerStatus, markerStatus, markerIsChosen, setMarkerI
         dispatch({ type: "ADD_EVENT", payload: newEvent });
         setMarkerIsChosen(!setMarkerIsChosen);
         setMarkerStatus(!markerStatus);
+        history.push('/myevents');
     }
 
     return (
