@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactCarousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import ForYouCard from '../CardComponents/ForYouCard';
@@ -23,7 +23,13 @@ const responsive = {
 };
 
 const Carousel = ({ information }) => {
-    console.log(information);
+
+    const [cards, setCards] = useState([]);
+
+    useEffect(() => {
+        setCards(information);
+    }, [information]);
+
     return (
         <ReactCarousel
             responsive={responsive}
@@ -33,7 +39,7 @@ const Carousel = ({ information }) => {
             autoPlaySpeed={3500}
             infinite={true}
         >
-            {information.map((e) => {
+            {cards.map((e) => {
                 return <ForYouCard information={e} />
             })}
         </ReactCarousel>

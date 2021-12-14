@@ -114,9 +114,6 @@ export const updateUser = (userInfo) => {
             body: JSON.stringify(userInfo)
         });
         const json = await response.json();
-        console.log("***");
-        console.log("updated");
-        console.log("***");
         dispatch({
             type: 'UPDATE_USER',
             payload: '',

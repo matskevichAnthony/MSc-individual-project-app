@@ -12,7 +12,7 @@ import {
     StyledLink,
 } from './styled';
 
-import { FaHome, FaLocationArrow, FaStar, FaUserAlt, FaClock } from "react-icons/fa";
+import { FaLocationArrow, FaStar, FaUserAlt, FaClock } from "react-icons/fa";
 
 const ForYouCard = ({ information }) => {
     const userState = useSelector((state) => state.authReducer);
