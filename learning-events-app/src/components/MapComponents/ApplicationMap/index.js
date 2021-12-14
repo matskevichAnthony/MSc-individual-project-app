@@ -9,8 +9,8 @@ import { CreateEventButton, FilterWrapper, FilterButton } from './styled';
 import { getEvents } from '../../../action/events';
 
 const initialCenter = {
-    lat: 55.75070765150959,
-    lng: 37.63230442021678
+    lat: 55.87040845926683,
+    lng: -4.269543496531518
 }
 
 const ApplicationMap = () => {
