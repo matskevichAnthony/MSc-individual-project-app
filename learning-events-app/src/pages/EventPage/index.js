@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router';
-import { FaDollarSign, FaLocationArrow, FaHome, FaCalendarAlt, FaArrowLeft, } from "react-icons/fa";
+import { FaDollarSign, FaLocationArrow, FaHome, FaCalendarAlt, FaArrowLeft, FaUserAlt } from "react-icons/fa";
 import { getEvent } from '../../action/events';
 import { getEventsManaged } from '../../action/events';
 import { getEventsAttended } from '../../action/eventsAttended';
@@ -110,7 +110,7 @@ const EventPage = () => {
                             <IconWrapper><IconInnerWrapper><FaHome /> </IconInnerWrapper><TextInnerWrapper>{eventData.place}</TextInnerWrapper></IconWrapper>
                             <IconWrapper><IconInnerWrapper><FaLocationArrow /></IconInnerWrapper> <TextInnerWrapper>{eventData.address}</TextInnerWrapper></IconWrapper>
                             <IconWrapper><IconInnerWrapper><FaCalendarAlt /> </IconInnerWrapper><TextInnerWrapper>{eventData.event_date}</TextInnerWrapper></IconWrapper>
-                            <IconWrapper><IconInnerWrapper><FaCalendarAlt /> </IconInnerWrapper><TextInnerWrapper>{eventData.user && eventData.user.name}</TextInnerWrapper></IconWrapper>
+                            <IconWrapper><IconInnerWrapper><FaUserAlt /> </IconInnerWrapper><TextInnerWrapper>{eventData.user && eventData.user.name}</TextInnerWrapper></IconWrapper>
                         </InformationSideDiv>
                     </SideInfo>
                 </HeaderBox>

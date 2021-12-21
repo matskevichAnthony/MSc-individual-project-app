@@ -67,21 +67,3 @@ const CardComponent = ({ information }) => {
 };
 
 export default CardComponent
-
-{/* <Col>
-            <Card>
-                <Card.Body>
-                    <Card.Title>{information.title}</Card.Title>
-                    <Card.Text>
-                        {information.description}
-                    </Card.Text>
-                    <StyledLink to={{
-                        pathname: `events/${information.id}`, props: information
-
-                    }}><StyledButton onClick={() => clickHandler()}>click me</StyledButton></StyledLink>
-                </Card.Body>
-                <Card.Footer>
-                    <small className="text-muted"></small>
-                </Card.Footer>
-            </Card>
-</Col> */}
